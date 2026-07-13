@@ -112,11 +112,11 @@ const CAPABILITIES = [
   },
 ];
 
-const FOUNDER_SIGS = [
-  { name: "Nelson Mwangi", art: "/art/sig-01.svg" },
-  { name: "Adrian Mang'are", art: "/art/sig-02.svg" },
-  { name: "Angelo Makory", art: "/art/sig-03.svg" },
-  { name: "Cyprian Kibet", art: "/art/sig-04.svg" },
+const FOUNDER_CARDS = [
+  { name: "Nelson Mwangi", photo: "/team/nelson.jpg" },
+  { name: "Adrian Mang'are", photo: "/team/adrian.jpg" },
+  { name: "Angelo Makory", photo: "/team/angelo.jpg" },
+  { name: "Cyprian Kibet", photo: "/team/cyprian.jpg" },
 ];
 
 export default function Home() {
@@ -377,11 +377,11 @@ export default function Home() {
           </div>
 
           <div className="mt-16 grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
-            {FOUNDER_SIGS.map((f, i) => (
+            {FOUNDER_CARDS.map((f, i) => (
               <Reveal key={f.name} delay={0.08 + i * 0.07}>
                 <Link href="/founders" className="group block">
                   <CardLit className="img-frame aspect-[3/4] w-full">
-                    <img src={f.art} alt={f.name} />
+                    <img src={f.photo} alt={f.name} loading="lazy" decoding="async" />
                     <div className="cap">
                       <p className="font-mono text-[0.6rem] tracking-[0.28em] text-white/60 uppercase">
                         {`0${i + 1}`}
