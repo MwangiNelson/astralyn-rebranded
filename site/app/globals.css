@@ -1,0 +1,785 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------
+   ASTRALYN 2.0 — SUNLIT EDITORIAL SYSTEM
+   The old site treated every page as a dark room. The new system starts
+   with paper, ink and a small amount of vivid signal colour. Dark imagery
+   is now used as a contrast moment, not as the default environment.
+------------------------------------------------------------- */
+@theme {
+  --color-midnight: #080808;
+  --color-graphite: #111111;
+  --color-gunmetal: #1c1c1c;
+  --color-steel: #6e6e6e;
+  --color-chrome: #d8d8d4;
+  --color-silver: #ababaa;
+  --color-steel-2: #858584;
+  --color-white: #f5f5f0;
+
+  /* Cinematic grade — Blade Runner 2049. Used in imagery, glow and
+     atmosphere only; the chrome UI itself stays monochrome. */
+  --color-teal: #d7d7d1;
+  --color-teal-deep: #777773;
+  --color-amber: #f5f5f0;
+  --color-amber-deep: #a5a5a0;
+  --color-ice: #deded8;
+
+  --font-display: "Clash Display", "General Sans", "Satoshi", ui-sans-serif,
+    system-ui, -apple-system, sans-serif;
+  --font-sans: "Satoshi", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+
+  --ease-cinematic: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+  background: var(--color-midnight);
+  color: var(--color-white);
+  scroll-behavior: auto;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-white);
+  color: var(--color-midnight);
+}
+
+/* Editorial display type — heavy, confident */
+.display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.86;
+  text-wrap: balance;
+}
+
+/* Maximum weight — the hero words. Satoshi Black, tighter than tight. */
+.display-black {
+  font-family: "Satoshi", var(--font-display), sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.045em;
+  line-height: 0.82;
+  text-wrap: balance;
+}
+
+/* Big statements sit over dark plates — give them a faint halo so the
+   letterforms read as lit, not flat. */
+.headline-lit {
+  text-shadow:
+    0 0 36px rgba(245, 245, 240, 0.11),
+    0 1px 0 rgba(0, 0, 0, 0.7);
+}
+
+.display-outline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.86;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(201, 204, 209, 0.4);
+}
+
+/* Mono label — thin, geometric, engineered */
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-silver);
+}
+
+/* Chrome text — light as the accent */
+.text-chrome-sheen {
+  background: linear-gradient(
+    100deg,
+    #6f6f6d 0%,
+    #f5f5f0 25%,
+    #a3a3a0 50%,
+    #f5f5f0 75%,
+    #6f6f6d 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: sheen 7s linear infinite;
+}
+
+@keyframes sheen {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Hairline — engineered dividers */
+.hairline {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(245, 245, 240, 0.25),
+    transparent
+  );
+}
+
+/* Smoked glass panel */
+.glass {
+  background: rgba(20, 20, 20, 0.78);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(245, 245, 240, 0.12);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.26);
+}
+
+/* Volumetric glow — the accent is light */
+.glow {
+  box-shadow:
+    0 0 80px rgba(245, 245, 240, 0.07),
+    0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Buttons illuminate */
+.btn-core {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  border: 1px solid rgba(245, 245, 240, 0.28);
+  background: transparent;
+  transition:
+    border-color 0.6s var(--ease-cinematic),
+    box-shadow 0.6s var(--ease-cinematic),
+    background 0.6s var(--ease-cinematic);
+}
+
+.btn-core:hover {
+  border-color: var(--color-white);
+  background: rgba(245, 245, 240, 0.06);
+  box-shadow:
+    0 0 40px rgba(245, 245, 240, 0.12),
+    inset 0 0 24px rgba(245, 245, 240, 0.04);
+}
+
+.btn-solid {
+  background: var(--color-white);
+  color: var(--color-midnight);
+  border-color: var(--color-white);
+}
+
+.btn-solid:hover {
+  background: var(--color-chrome);
+  color: var(--color-midnight);
+  box-shadow: 0 0 60px rgba(245, 245, 240, 0.2);
+}
+
+.cta-inverse {
+  display: inline-flex;
+  align-items: center;
+  padding: 1.1rem 2.2rem;
+  background: #080808;
+  color: #f5f5f0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: transform 0.45s var(--ease-cinematic), box-shadow 0.45s var(--ease-cinematic);
+}
+
+.cta-inverse:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Cursor light — chrome reflects movement */
+.card-lit {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-lit::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    500px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(245, 245, 240, 0.08),
+    transparent 45%
+  );
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-cinematic);
+  pointer-events: none;
+}
+
+.card-lit:hover::before {
+  opacity: 1;
+}
+
+/* Architectural grid — engineered space, never empty */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(245, 245, 240, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 245, 240, 0.055) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+.grid-bg-fade {
+  -webkit-mask-image: radial-gradient(
+    ellipse 90% 80% at 50% 40%,
+    black 30%,
+    transparent 75%
+  );
+  mask-image: radial-gradient(
+    ellipse 90% 80% at 50% 40%,
+    black 30%,
+    transparent 75%
+  );
+}
+
+/* Graphite panel — breaks the black into rooms */
+.panel {
+  background: linear-gradient(135deg, #151515 0%, #090909 58%, #171717 100%);
+  border-top: 1px solid rgba(245, 245, 240, 0.1);
+  border-bottom: 1px solid rgba(245, 245, 240, 0.06);
+}
+
+/* Big engineered stat */
+.stat-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  background: linear-gradient(180deg, #f5f5f0 0%, #777775 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Ticker marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 36s linear infinite;
+}
+
+/* Grain — material, never plastic */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Monochrome atmosphere — depth without a colour cast. */
+.aurora {
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  filter: blur(44px) saturate(115%);
+  opacity: 0.5;
+}
+
+.aurora::before,
+.aurora::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      38% 46% at 22% 32%,
+      rgba(245, 245, 240, 0.12),
+      transparent 70%
+    ),
+    radial-gradient(
+      34% 40% at 78% 66%,
+      rgba(245, 245, 240, 0.07),
+      transparent 72%
+    );
+  animation: drift 26s ease-in-out infinite alternate;
+}
+.aurora::after {
+  background:
+    radial-gradient(
+      30% 34% at 68% 24%,
+      rgba(245, 245, 240, 0.09),
+      transparent 70%
+    ),
+    radial-gradient(
+      40% 44% at 30% 76%,
+      rgba(245, 245, 240, 0.04),
+      transparent 74%
+    );
+  animation-duration: 34s;
+  animation-direction: alternate-reverse;
+}
+
+.aurora-amber::before {
+  background:
+    radial-gradient(
+      42% 48% at 30% 30%,
+      rgba(245, 245, 240, 0.13),
+      transparent 72%
+    ),
+    radial-gradient(
+      34% 40% at 74% 70%,
+      rgba(245, 245, 240, 0.05),
+      transparent 74%
+    );
+}
+
+@keyframes drift {
+  from {
+    transform: translate3d(-3%, -2%, 0) scale(1.05);
+  }
+  to {
+    transform: translate3d(4%, 3%, 0) scale(1.15);
+  }
+}
+
+/* Section texture — engineered grid + faint atmosphere, never a void. */
+.section-tex {
+  position: relative;
+  isolation: isolate;
+}
+.section-tex::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(245, 245, 240, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 245, 240, 0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(
+    ellipse 100% 90% at 50% 50%,
+    black 35%,
+    transparent 80%
+  );
+  mask-image: radial-gradient(
+    ellipse 100% 90% at 50% 50%,
+    black 35%,
+    transparent 80%
+  );
+}
+
+/* Framed imagery — chrome edge + cinematic grade, so photos read as
+   engineered artifacts, not stock. */
+.img-frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(245, 245, 240, 0.15);
+  background: var(--color-graphite);
+}
+.img-frame img,
+.img-frame > svg,
+.img-frame > .art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.12);
+}
+.img-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      transparent 40%,
+      rgba(0, 0, 0, 0.62) 100%
+    ),
+    radial-gradient(
+      120% 100% at 20% 0%,
+      rgba(245, 245, 240, 0.05),
+      transparent 55%
+    ),
+    radial-gradient(
+      120% 100% at 100% 100%,
+      rgba(245, 245, 240, 0.04),
+      transparent 55%
+    );
+  mix-blend-mode: normal;
+}
+.img-frame .cap {
+  position: absolute;
+  left: 1.25rem;
+  bottom: 1.1rem;
+  z-index: 2;
+}
+
+/* Captions sit on intentionally dark media, so keep the type legible even
+   though the site-wide white token is now ink. */
+.img-frame .cap,
+.img-frame .cap * {
+  color: #f5f5f0 !important;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.42);
+}
+
+/* Brushed-metal plate */
+.chrome-plate {
+  background:
+    linear-gradient(
+      125deg,
+      #f5f5f0 0%,
+      #9c9c98 22%,
+      #f5f5f0 46%,
+      #7d7d7a 70%,
+      #d5d5d0 100%
+    );
+  border: 1px solid rgba(245, 245, 240, 0.12);
+}
+
+/* Restrained color accents */
+.text-teal {
+  color: var(--color-teal);
+}
+.text-amber {
+  color: var(--color-amber);
+}
+
+/* Hero core glow — faint cyan-white halo behind the WebGL core. */
+.core-halo {
+  background: radial-gradient(
+    ellipse 42% 42% at 50% 47%,
+    rgba(245, 245, 240, 0.13),
+    rgba(245, 245, 240, 0.05) 40%,
+    transparent 68%
+  );
+}
+
+/* Marquee — reversed variant */
+.marquee-track.reverse {
+  animation-direction: reverse;
+}
+
+/* ------------------------------------------------------------
+   HERO LAB — gradient-animation keyframes (Aceternity blobs)
+   + a shared film-noise overlay. Consumed by /heroes/* iterations.
+------------------------------------------------------------ */
+@theme {
+  --animate-first: moveVertical 30s ease infinite;
+  --animate-second: moveInCircle 20s reverse infinite;
+  --animate-third: moveInCircle 40s linear infinite;
+  --animate-fourth: moveHorizontal 40s ease infinite;
+  --animate-fifth: moveInCircle 20s ease infinite;
+}
+
+@keyframes moveHorizontal {
+  0% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+  50% {
+    transform: translateX(50%) translateY(10%);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+}
+@keyframes moveInCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes moveVertical {
+  0% {
+    transform: translateY(-50%);
+  }
+  50% {
+    transform: translateY(50%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+/* Live static — the <Noise /> canvas, fixed over the whole viewport.
+   Replaces the printed-on .grain texture with grain that actually moves. */
+.noise-live {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  image-rendering: pixelated;
+}
+
+/* Energy-masked hero word — white glyphs below, the WebGL energy canvas above
+   with mix-blend-mode: darken. min(canvas, below) leaves the near-black hero
+   untouched and reveals the energy only through the letterforms. */
+.energy-word {
+  position: relative;
+  display: inline-block;
+}
+
+.energy-word .energy-word-text {
+  display: block;
+  color: #fff;
+  /* Black plate behind the glyphs: the canvas' darken blend resolves inside
+     the line's stacking context, so the backdrop must be black (not the page)
+     for the energy to clip to the letterforms. Invisible over the #080808 hero. */
+  background: #000;
+  text-shadow: none;
+}
+
+.energy-word canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: darken;
+  pointer-events: none;
+}
+
+/* No WebGL / reduced motion — a still of the same energy, clipped to the type. */
+.energy-word-fallback {
+  background: linear-gradient(115deg, #ff7a00 0%, #ff3d2e 30%, #d84bff 62%, #5aa7ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+/* Film-noise overlay — apply to an absolutely-positioned div over a hero. */
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 260px 260px;
+  opacity: 0.055;
+  mix-blend-mode: multiply;
+}
+
+/* ------------------------------------------------------------
+   COMPOSITION
+   Reusable layers make the long form pages read as a continuous journey:
+   paper sections tuck beneath the preceding chapter rather than appearing
+   as disconnected blocks.
+------------------------------------------------------------- */
+.chapter-surface {
+  position: relative;
+  margin-top: -2.5rem;
+  border-radius: 2rem 2rem 0 0;
+  background: var(--color-midnight);
+  box-shadow: 0 -1px 0 rgba(245, 245, 240, 0.1), 0 -24px 70px rgba(0, 0, 0, 0.5);
+}
+
+.chapter-surface::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 86% 12%, rgba(245, 245, 240, 0.06), transparent 25rem),
+    radial-gradient(circle at 8% 70%, rgba(245, 245, 240, 0.04), transparent 26rem);
+}
+
+.chapter-surface > * {
+  position: relative;
+}
+
+.editorial-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-silver);
+}
+
+.editorial-kicker::before {
+  width: 2.75rem;
+  height: 1px;
+  content: "";
+  background: var(--color-amber);
+}
+
+.hero-orbit {
+  position: absolute;
+  right: clamp(-13rem, -4vw, -3rem);
+  top: 50%;
+  width: clamp(26rem, 54vw, 58rem);
+  aspect-ratio: 1;
+  border: 1px solid rgba(245, 245, 240, 0.22);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  background:
+    radial-gradient(circle at 42% 42%, rgba(245, 245, 240, 0.7) 0 2%, transparent 2.6%),
+    radial-gradient(circle at 58% 60%, rgba(245, 245, 240, 0.18) 0 5%, transparent 16%),
+    conic-gradient(from 126deg, transparent 0 18%, rgba(245, 245, 240, 0.23) 24%, transparent 31% 48%, rgba(245, 245, 240, 0.14) 57%, transparent 67% 100%);
+  box-shadow: inset 0 0 0 5rem rgba(245, 245, 240, 0.03), 0 30px 80px rgba(0, 0, 0, 0.45);
+  animation: orbit-drift 18s ease-in-out infinite alternate;
+}
+
+.hero-orbit::before,
+.hero-orbit::after {
+  position: absolute;
+  content: "";
+  border: 1px solid rgba(245, 245, 240, 0.14);
+  border-radius: inherit;
+}
+
+.hero-orbit::before { inset: 11%; }
+.hero-orbit::after { inset: 25%; border-color: rgba(245, 245, 240, 0.3); }
+
+@keyframes orbit-drift {
+  from { transform: translateY(-52%) rotate(-4deg); }
+  to { transform: translateY(-46%) rotate(5deg); }
+}
+
+.manifesto-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(11rem, 0.38fr) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 8rem);
+  min-height: 29rem;
+  padding: clamp(2rem, 6vw, 6rem);
+  overflow: hidden;
+  border: 1px solid rgba(245, 245, 240, 0.16);
+  background:
+    linear-gradient(110deg, rgba(22, 22, 22, 0.98), rgba(7, 7, 7, 0.96)),
+    var(--color-midnight);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.42);
+}
+
+.manifesto-card::before {
+  position: absolute;
+  right: -8rem;
+  bottom: -10rem;
+  width: 29rem;
+  aspect-ratio: 1;
+  content: "";
+  border: 1px solid rgba(245, 245, 240, 0.2);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4rem rgba(245, 245, 240, 0.025), 0 0 0 9rem rgba(245, 245, 240, 0.015);
+}
+
+.belief-index,
+.belief-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.belief-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+@media (max-width: 767px) {
+  .hero-orbit { opacity: 0.46; right: -17rem; top: 55%; }
+  .chapter-surface { margin-top: -1.5rem; border-radius: 1.25rem 1.25rem 0 0; }
+  .manifesto-card {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    min-height: 0;
+  }
+}
+
+/* ------------------------------------------------------------
+   OPERATOR DOSSIER — the founder detail takeover.
+   A surveillance/HUD language: a portrait under a scanning reticle,
+   decrypting data fields, a grid of telemetry. Built for the
+   list → full-page transition on /founders.
+------------------------------------------------------------ */
+
+/* Vertical sweep passing over the portrait — the "scan". */
+@keyframes dossier-scan {
+  0% { transform: translateY(-8%); opacity: 0; }
+  12% { opacity: 0.85; }
+  88% { opacity: 0.85; }
+  100% { transform: translateY(108%); opacity: 0; }
+}
+.dossier-scan {
+  animation: dossier-scan 3.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* CRT-style horizontal scanlines over the media. */
+.dossier-scanlines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(245, 245, 240, 0.05) 0px,
+    rgba(245, 245, 240, 0.05) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* Reticle breathing — never quite still, like a live lock. */
+@keyframes reticle-pulse {
+  0%, 100% { opacity: 0.55; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+}
+.reticle-pulse {
+  animation: reticle-pulse 2.8s ease-in-out infinite;
+}
+
+/* Status light — a slow blink for ACTIVE / LOCKED readouts. */
+@keyframes status-blink {
+  0%, 68%, 100% { opacity: 1; }
+  75%, 92% { opacity: 0.25; }
+}
+.status-blink {
+  animation: status-blink 2.4s steps(1, end) infinite;
+}
+
+/* Faint telemetry grid behind the dossier. */
+.dossier-grid {
+  background-image:
+    linear-gradient(rgba(245, 245, 240, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 245, 240, 0.04) 1px, transparent 1px);
+  background-size: 46px 46px;
+}
+
+/* Indeterminate loading strip (route loading.tsx) */
+@keyframes loadingStrip {
+  0% {
+    transform: translateX(-130%);
+  }
+  100% {
+    transform: translateX(380%);
+  }
+}
+.loading-strip {
+  animation: loadingStrip 1.1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

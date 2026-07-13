@@ -1,0 +1,14 @@
+# working backups / scratch
+nelson.original.backup.jpg
+*.backup.jpg
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.log
+
+# dependencies / build (also covered by site/.gitignore)
+node_modules/
+.next/
+out/
+*.tsbuildinfo
