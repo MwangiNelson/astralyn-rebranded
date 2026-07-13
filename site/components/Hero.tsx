@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { CTA } from "@/lib/site";
 import EnergyWord from "@/components/EnergyWord";
+import MetallicPaint from "@/components/MetallicPaint";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const LINES = ["Power the", "next generation", "of business"];
@@ -47,7 +48,61 @@ export default function Hero() {
     <section className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden bg-midnight">
       {/* A precise field of light — movement without a colour cast. */}
       <div className="grid-bg grid-bg-fade absolute inset-0 opacity-80" />
-      <div className="hero-orbit" aria-hidden />
+      <div className="hero-metal-logo" aria-hidden>
+        {/* A faint perimeter remains while the metallic logo resolves. */}
+        <svg
+          className="hero-metal-logo__outline"
+          viewBox="-30 -30 226.9 234"
+          preserveAspectRatio="xMidYMid meet"
+        >
+          <defs>
+            <filter
+              id="hero-metal-logo-outline-filter"
+              x="-8%"
+              y="-8%"
+              width="116%"
+              height="116%"
+              colorInterpolationFilters="sRGB"
+            >
+              <feMorphology in="SourceAlpha" operator="dilate" radius="0.72" result="expanded" />
+              <feComposite in="expanded" in2="SourceAlpha" operator="out" result="edge" />
+              <feFlood floodColor="#f5f5f0" floodOpacity="0.3" result="outlineColor" />
+              <feComposite in="outlineColor" in2="edge" operator="in" />
+            </filter>
+          </defs>
+          <image
+            href="/astralyn_logo_metal.svg"
+            x="-30"
+            y="-30"
+            width="226.9"
+            height="234"
+            filter="url(#hero-metal-logo-outline-filter)"
+          />
+        </svg>
+        <div className="hero-metal-logo__paint">
+          <MetallicPaint
+            imageSrc="/astralyn_logo_metal.svg"
+            seed={42}
+            scale={3.2}
+            patternSharpness={1.1}
+            noiseScale={0.45}
+            speed={0.16}
+            liquid={0.48}
+            brightness={1.45}
+            contrast={0.72}
+            refraction={0.006}
+            blur={0.012}
+            chromaticSpread={1.25}
+            fresnel={0.82}
+            waveAmplitude={0.72}
+            distortion={0.35}
+            contour={0.28}
+            lightColor="#f5f5f0"
+            darkColor="#2d3034"
+            tintColor="#d9e7e3"
+          />
+        </div>
+      </div>
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_48%_52%_at_12%_88%,rgba(245,245,240,0.07),transparent_72%)]" />
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(8,8,8,0.96)_0%,rgba(8,8,8,0.78)_43%,rgba(8,8,8,0.2)_78%,rgba(8,8,8,0)_100%)]" />
 

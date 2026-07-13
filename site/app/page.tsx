@@ -112,15 +112,6 @@ const CAPABILITIES = [
   },
 ];
 
-const MATERIALS = [
-  { t: "Liquid Chrome", k: "Primary Material", art: "/art/chrome-macro.svg" },
-  { t: "Infinite Architecture", k: "Depth & Perspective", art: "/art/corridor.svg" },
-  { t: "Contained Energy", k: "The Core", art: "/art/field-teal.svg" },
-  { t: "Amber Horizon", k: "Warmth & Arrival", art: "/art/field-amber.svg" },
-  { t: "Dual Grade", k: "Cinematic Light", art: "/art/nebula-dual.svg" },
-  { t: "Signal Field", k: "Intelligence", art: "/art/sig-03.svg" },
-];
-
 const FOUNDER_SIGS = [
   { name: "Nelson Mwangi", art: "/art/sig-01.svg" },
   { name: "Adrian Mang'are", art: "/art/sig-02.svg" },
@@ -213,12 +204,13 @@ export default function Home() {
       </section>
 
       {/* ---------------- THE JOURNEY ---------------- */}
-      <section className="section-tex relative mx-auto max-w-[1600px] px-6 py-36 md:px-12">
+      <section className="landing-bone relative overflow-hidden">
+        <div className="relative mx-auto max-w-[1600px] px-6 py-36 md:px-12 md:py-44">
         <Reveal>
           <p className="label">The Transformation</p>
-          <h2 className="display headline-lit mt-6 mb-24 max-w-4xl text-[clamp(2.2rem,5vw,4rem)]">
+          <h2 className="display landing-bone__headline mt-6 mb-24 max-w-4xl text-[clamp(2.2rem,5vw,4rem)]">
             How dormant ideas become{" "}
-            <span className="text-white">market-defining products.</span>
+            <span>market-defining products.</span>
           </h2>
         </Reveal>
 
@@ -240,14 +232,14 @@ export default function Home() {
                       {c.title}
                     </h3>
                   </div>
-                  <p className="mt-6 max-w-md text-lg leading-relaxed text-silver">
+                  <p className="mt-6 max-w-md text-lg leading-relaxed text-black/70">
                     {c.line}
                   </p>
                   <div className="mt-6 flex flex-wrap gap-3">
                     {c.tags.map((t) => (
                       <span
                         key={t}
-                        className="border border-white/10 px-4 py-2 font-mono text-[0.65rem] tracking-[0.2em] text-chrome uppercase"
+                        className="border border-black/25 px-4 py-2 font-mono text-[0.65rem] tracking-[0.2em] text-black/75 uppercase"
                       >
                         {t}
                       </span>
@@ -267,6 +259,7 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </div>
         </div>
       </section>
 
@@ -314,38 +307,6 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ---------------- MATERIALS GALLERY ---------------- */}
-      <section className="mx-auto max-w-[1600px] px-6 py-36 md:px-12">
-        <Reveal>
-          <p className="label">The Materials</p>
-          <h2 className="display headline-lit mt-6 mb-16 max-w-3xl text-[clamp(2rem,4.5vw,3.5rem)]">
-            Liquid chrome. Controlled light.{" "}
-            <span className="text-chrome-sheen">Engineered depth.</span>
-          </h2>
-        </Reveal>
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
-          {MATERIALS.map((m, i) => (
-            <Reveal key={m.t} delay={(i % 3) * 0.08}>
-              <CardLit
-                className={`img-frame group w-full ${
-                  i === 0 ? "aspect-[16/10] md:col-span-2" : "aspect-square"
-                }`}
-              >
-                <img src={m.art} alt={m.t} />
-                <div className="cap">
-                  <p className="font-mono text-[0.6rem] tracking-[0.3em] text-teal uppercase">
-                    {m.k}
-                  </p>
-                  <p className="display mt-1 text-lg text-white md:text-xl">
-                    {m.t}
-                  </p>
-                </div>
-              </CardLit>
-            </Reveal>
-          ))}
         </div>
       </section>
 

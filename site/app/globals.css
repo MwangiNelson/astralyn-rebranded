@@ -383,6 +383,86 @@ body {
   );
 }
 
+/* Bone-white editorial chapter — a measured pause between the dark rooms. */
+.landing-bone {
+  position: relative;
+  isolation: isolate;
+  color: #080808;
+  background: #f1efe7;
+  border-block: 1px solid rgba(8, 8, 8, 0.18);
+}
+
+.landing-bone::before,
+.landing-bone::after {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+}
+
+.landing-bone::before {
+  inset: 0;
+  opacity: 0.72;
+  background-image:
+    linear-gradient(rgba(8, 8, 8, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(8, 8, 8, 0.07) 1px, transparent 1px),
+    radial-gradient(ellipse 52% 72% at 100% 42%, rgba(8, 8, 8, 0.09), transparent 70%);
+  background-size: 72px 72px, 72px 72px, auto;
+  -webkit-mask-image: linear-gradient(90deg, black, rgba(0, 0, 0, 0.35));
+  mask-image: linear-gradient(90deg, black, rgba(0, 0, 0, 0.35));
+}
+
+.landing-bone::after {
+  right: clamp(-9rem, -2vw, -2rem);
+  bottom: clamp(-1rem, 4vw, 5rem);
+  color: rgba(8, 8, 8, 0.045);
+  content: "ASTRALYN / 01";
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 13vw, 13rem);
+  font-weight: 700;
+  letter-spacing: -0.07em;
+  line-height: 0.7;
+  white-space: nowrap;
+}
+
+.landing-bone .label {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  color: rgba(8, 8, 8, 0.64);
+}
+
+.landing-bone .label::before {
+  width: 2.5rem;
+  height: 1px;
+  content: "";
+  background: #080808;
+}
+
+.landing-bone__headline,
+.landing-bone .display {
+  color: #080808;
+  text-shadow: none;
+}
+
+.landing-bone__headline {
+  font-weight: 800;
+}
+
+.landing-bone .display-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(8, 8, 8, 0.38);
+}
+
+.landing-bone .hairline {
+  background: linear-gradient(90deg, transparent, rgba(8, 8, 8, 0.34), transparent);
+}
+
+.landing-bone .img-frame {
+  border-color: rgba(8, 8, 8, 0.74);
+  box-shadow: 10px 10px 0 rgba(8, 8, 8, 0.1);
+}
+
 /* Framed imagery — chrome edge + cinematic grade, so photos read as
    engineered artifacts, not stock. */
 .img-frame {
@@ -623,35 +703,46 @@ body {
   background: var(--color-amber);
 }
 
-.hero-orbit {
+.hero-metal-logo {
   position: absolute;
-  right: clamp(-13rem, -4vw, -3rem);
+  right: clamp(-12rem, -4vw, -2rem);
   top: 50%;
-  width: clamp(26rem, 54vw, 58rem);
+  z-index: 0;
+  pointer-events: none;
+  width: clamp(22rem, 45vw, 48rem);
   aspect-ratio: 1;
-  border: 1px solid rgba(245, 245, 240, 0.22);
-  border-radius: 50%;
   transform: translateY(-50%);
-  background:
-    radial-gradient(circle at 42% 42%, rgba(245, 245, 240, 0.7) 0 2%, transparent 2.6%),
-    radial-gradient(circle at 58% 60%, rgba(245, 245, 240, 0.18) 0 5%, transparent 16%),
-    conic-gradient(from 126deg, transparent 0 18%, rgba(245, 245, 240, 0.23) 24%, transparent 31% 48%, rgba(245, 245, 240, 0.14) 57%, transparent 67% 100%);
-  box-shadow: inset 0 0 0 5rem rgba(245, 245, 240, 0.03), 0 30px 80px rgba(0, 0, 0, 0.45);
-  animation: orbit-drift 18s ease-in-out infinite alternate;
+  filter: drop-shadow(0 1.5rem 3rem rgba(0, 0, 0, 0.46));
+  animation: logo-drift 18s ease-in-out infinite alternate;
 }
 
-.hero-orbit::before,
-.hero-orbit::after {
+.hero-metal-logo::before {
   position: absolute;
+  inset: 13%;
   content: "";
-  border: 1px solid rgba(245, 245, 240, 0.14);
-  border-radius: inherit;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245, 245, 240, 0.12), transparent 68%);
+  filter: blur(2.5rem);
 }
 
-.hero-orbit::before { inset: 11%; }
-.hero-orbit::after { inset: 25%; border-color: rgba(245, 245, 240, 0.3); }
+.hero-metal-logo__outline,
+.hero-metal-logo__paint {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
 
-@keyframes orbit-drift {
+.hero-metal-logo__outline {
+  display: block;
+  overflow: visible;
+}
+
+.hero-metal-logo__paint {
+  overflow: hidden;
+}
+
+@keyframes logo-drift {
   from { transform: translateY(-52%) rotate(-4deg); }
   to { transform: translateY(-46%) rotate(5deg); }
 }
@@ -697,13 +788,17 @@ body {
 
 
 @media (max-width: 767px) {
-  .hero-orbit { opacity: 0.46; right: -17rem; top: 55%; }
+  .hero-metal-logo { right: -10rem; top: 56%; width: clamp(22rem, 94vw, 32rem); opacity: 0.56; }
   .chapter-surface { margin-top: -1.5rem; border-radius: 1.25rem 1.25rem 0 0; }
   .manifesto-card {
     grid-template-columns: 1fr;
     gap: 2.5rem;
     min-height: 0;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-metal-logo { animation: none; }
 }
 
 /* ------------------------------------------------------------

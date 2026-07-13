@@ -1,0 +1,17 @@
+.paint-container {
+  display: block;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 500ms ease-out;
+}
+
+.paint-container.is-ready {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .paint-container {
+    transition: none;
+  }
+}

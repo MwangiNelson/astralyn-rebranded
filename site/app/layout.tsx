@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -7,11 +7,37 @@ import Preloader from "@/components/Preloader";
 import RouteProgress from "@/components/RouteProgress";
 import PageTransition from "@/components/PageTransition";
 import Noise from "@/components/Noise";
+import { SITE_URL } from "@/lib/site";
+
+const TITLE = "Astralyn Group — Powered by Astralyn";
+const DESCRIPTION =
+  "Astralyn Group is a technology house. We architect businesses. We engineer products. We shape the future. Strategy. Design. Technology.";
 
 export const metadata: Metadata = {
-  title: "Astralyn Group — Powered by Astralyn",
-  description:
-    "Astralyn Group is a technology house. We architect businesses. We engineer products. We shape the future. Strategy. Design. Technology.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: TITLE,
+    template: "%s — Astralyn Group",
+  },
+  description: DESCRIPTION,
+  applicationName: "Astralyn Group",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName: "Astralyn Group",
+    title: TITLE,
+    description: DESCRIPTION,
+    url: SITE_URL,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#080808",
 };
 
 export default function RootLayout({
