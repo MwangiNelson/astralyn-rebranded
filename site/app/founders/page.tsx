@@ -619,9 +619,7 @@ export default function FoundersPage() {
           <h1 className="display-black headline-lit text-[clamp(3rem,9vw,8.5rem)] uppercase">
             <RevealWords text="Four minds." delay={0.2} />
             <br />
-            <span className="text-chrome-sheen">
-              <RevealWords text="One force." delay={0.5} />
-            </span>
+            <RevealWords text="One force." delay={0.5} gradient />
           </h1>
           <Reveal delay={0.7} className="mt-12 max-w-md">
             <p className="text-base leading-relaxed text-silver">

@@ -25,9 +25,7 @@ export default function ContactPage() {
         <h1 className="display text-[clamp(3rem,10vw,10rem)] uppercase">
           <RevealWords text="Speak with" delay={0.2} />
           <br />
-          <span className="text-chrome-sheen">
-            <RevealWords text="Astralyn" delay={0.6} />
-          </span>
+          <RevealWords text="Astralyn" delay={0.6} gradient />
         </h1>
 
         {/* The address — one line, fully lit on approach */}

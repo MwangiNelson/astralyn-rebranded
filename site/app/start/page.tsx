@@ -146,9 +146,7 @@ export default function StartPage() {
         <h1 className="display text-[clamp(2.2rem,5.5vw,4.5rem)] uppercase">
           <RevealWords text="Start something" delay={0.1} />
           <br />
-          <span className="text-chrome-sheen">
-            <RevealWords text="extraordinary" delay={0.4} />
-          </span>
+          <RevealWords text="extraordinary" delay={0.4} gradient />
         </h1>
       </div>
 

@@ -166,9 +166,7 @@ function ProductLaunch({ product }: { product: Product }) {
         <h2 className="display mt-6 max-w-5xl text-[clamp(2.6rem,6.5vw,6rem)]">
           <RevealWords text={product.headline[0]} delay={0.15} />
           <br />
-          <span className="text-chrome-sheen">
-            <RevealWords text={product.headline[1]} delay={0.35} />
-          </span>
+          <RevealWords text={product.headline[1]} delay={0.35} gradient />
         </h2>
 
         {/* Problem / Solution */}
@@ -241,9 +239,7 @@ export default function ProductsPage() {
           <h1 className="display max-w-6xl text-[clamp(3.8rem,9vw,8.5rem)] text-white uppercase">
             <RevealWords text="Ideas become" delay={0.2} />
             <br />
-            <span className="text-chrome-sheen">
-              <RevealWords text="industry" delay={0.6} />
-            </span>
+            <RevealWords text="industry" delay={0.6} gradient />
           </h1>
           <motion.p
             initial={{ opacity: 0 }}
@@ -281,9 +277,7 @@ export default function ProductsPage() {
           <h2 className="display text-[clamp(2.2rem,6vw,5.5rem)] uppercase">
             <RevealWords text="Your product" />
             <br />
-            <span className="text-chrome-sheen">
-              <RevealWords text="belongs here" delay={0.3} />
-            </span>
+            <RevealWords text="belongs here" delay={0.3} gradient />
           </h2>
           <Reveal delay={0.5}>
             <Link href={CTA.href} className="btn-core btn-solid mt-16">

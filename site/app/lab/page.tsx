@@ -162,9 +162,7 @@ export default function LabPage() {
           <h1 className="display max-w-6xl text-[clamp(2.8rem,8vw,7.5rem)] uppercase">
             <RevealWords text="We research" delay={0.2} />
             <br />
-            <span className="text-chrome-sheen">
-              <RevealWords text="what's next" delay={0.6} />
-            </span>
+            <RevealWords text="what's next" delay={0.6} gradient />
           </h1>
           <motion.p
             initial={{ opacity: 0 }}
@@ -211,9 +209,7 @@ export default function LabPage() {
                 <RevealWords text="we stay ahead" delay={0.25} />
               </span>
               <br />
-              <span className="text-chrome-sheen">
-                <RevealWords text="of the brief." delay={0.5} />
-              </span>
+              <RevealWords text="of the brief." delay={0.5} gradient />
             </h2>
           </div>
           <Reveal delay={0.3} className="md:pt-24">
@@ -240,9 +236,7 @@ export default function LabPage() {
           <h2 className="display text-[clamp(2.2rem,6vw,5.5rem)] uppercase">
             <RevealWords text="Build the future" />
             <br />
-            <span className="text-chrome-sheen">
-              <RevealWords text="before it arrives" delay={0.3} />
-            </span>
+            <RevealWords text="before it arrives" delay={0.3} gradient />
           </h2>
           <Reveal delay={0.5}>
             <Link href={CTA.href} className="btn-core btn-solid mt-16">

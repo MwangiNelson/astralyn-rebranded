@@ -166,9 +166,7 @@ export default function Home() {
               <RevealWords text="Strategy gives it purpose." delay={0.2} />
             </span>
             <br />
-            <span className="text-chrome-sheen">
-              <RevealWords text="Design makes it human." delay={0.4} />
-            </span>
+            <RevealWords text="Design makes it human." delay={0.4} gradient />
           </h2>
           <div className="mt-20 grid gap-10 md:grid-cols-3">
             {[

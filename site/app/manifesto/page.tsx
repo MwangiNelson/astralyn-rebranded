@@ -107,9 +107,7 @@ function Belief({
             <h2 className="display text-[clamp(3rem,8vw,7.7rem)] uppercase">
               <RevealWords text={lines[0]} />
               <br />
-              <span className="text-chrome-sheen">
-                <RevealWords text={lines[1]} delay={0.18} />
-              </span>
+              <RevealWords text={lines[1]} delay={0.18} gradient />
             </h2>
           </Reveal>
           <Reveal
@@ -156,9 +154,7 @@ export default function Manifesto() {
             <h1 className="display text-[clamp(3rem,10vw,10rem)] uppercase">
               <RevealWords text="Built to" delay={0.3} />
               <br />
-              <span className="text-chrome-sheen">
-                <RevealWords text="move business." delay={0.7} />
-              </span>
+              <RevealWords text="move business." delay={0.7} gradient />
             </h1>
             <motion.p
               initial={{ opacity: 0 }}
@@ -236,9 +232,7 @@ export default function Manifesto() {
             <p className="label mb-12">The Signature</p>
           </Reveal>
           <h2 className="display text-[clamp(2.8rem,8vw,7.5rem)] uppercase">
-            <span className="text-chrome-sheen">
-              <RevealWords text="Powered by Astralyn." />
-            </span>
+            <RevealWords text="Powered by Astralyn." gradient />
           </h2>
           <Reveal delay={0.5} className="mt-16">
             <p className="mx-auto max-w-md text-base leading-relaxed text-silver">

@@ -59,9 +59,7 @@ export default function PartnersPage() {
         <h1 className="display text-[clamp(2.8rem,8vw,7.5rem)] uppercase">
           <RevealWords text="The council" delay={0.2} />
           <br />
-          <span className="text-chrome-sheen">
-            <RevealWords text="behind the house" delay={0.5} />
-          </span>
+          <RevealWords text="behind the house" delay={0.5} gradient />
         </h1>
         <Reveal delay={0.7} className="mt-12 max-w-md">
           <p className="text-base leading-relaxed text-silver">

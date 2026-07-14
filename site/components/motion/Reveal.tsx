@@ -35,10 +35,15 @@ export function RevealWords({
   text,
   className,
   delay = 0,
+  gradient = false,
 }: {
   text: string;
   className?: string;
   delay?: number;
+  /** Chrome-sheen gradient applied per word. Kept on the static leaf (not the
+   *  transformed span) so mobile WebKit still clips the gradient to the glyphs
+   *  — an ancestor `background-clip: text` drops transformed descendants on iOS. */
+  gradient?: boolean;
 }) {
   const words = text.split(" ");
   const reduceMotion = useReducedMotion();
@@ -78,8 +83,17 @@ export function RevealWords({
               ease: EASE,
             }}
           >
-            {w}
-            {i < words.length - 1 ? " " : ""}
+            {gradient ? (
+              <span className="text-chrome-sheen inline-block">
+                {w}
+                {i < words.length - 1 ? " " : ""}
+              </span>
+            ) : (
+              <>
+                {w}
+                {i < words.length - 1 ? " " : ""}
+              </>
+            )}
           </motion.span>
         </span>
       ))}

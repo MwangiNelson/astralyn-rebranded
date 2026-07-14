@@ -55,9 +55,11 @@ export default function Nav() {
           </Link>
 
           <div className="flex items-center gap-6">
-            <Link href={CTA.href} className="btn-core hidden lg:inline-flex">
-              Start Something
-            </Link>
+            <span className="hidden lg:inline-flex">
+              <Link href={CTA.href} className="btn-core">
+                Start Something
+              </Link>
+            </span>
             <button
               onClick={() => setOpen(!open)}
               aria-label={open ? "Close menu" : "Open menu"}
