@@ -1,0 +1,1134 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------
+   ASTRALYN — CHROME EDITORIAL SYSTEM
+   Dark rooms, architectural light, and one material: chrome.
+
+   The accent is not a hue. It is a *surface* — a graded metal ramp that
+   catches light and moves. Everywhere the site needs emphasis it reaches
+   for chrome rather than for colour, which is what the brand actually
+   asks for and what a flat monochrome palette could never deliver.
+------------------------------------------------------------- */
+@theme {
+  --color-midnight: #080808;
+  --color-graphite: #111111;
+  --color-gunmetal: #1c1c1c;
+  --color-steel: #6e6e6e;
+  --color-chrome: #d8d8d4;
+  --color-silver: #ababaa;
+  --color-steel-2: #858584;
+  --color-white: #f5f5f0;
+
+  /* The chrome ramp — five stops of one polished surface, from specular
+     highlight to the shadow the highlight is read against. Every accent
+     in the system is built from these and nothing else. */
+  --color-chrome-hi: #ffffff;
+  --color-chrome-1: #eceae4;
+  --color-chrome-mid: #b9b8b2;
+  --color-chrome-2: #8e8d88;
+  --color-chrome-lo: #56554f;
+
+  /* Faces are self-hosted and injected by next/font in app/layout.tsx —
+     --font-clash, --font-satoshi and --font-plex. Never reference the raw
+     family names here: if a face fails to load, a bare "Clash Display" silently
+     falls through to a system font and the whole site quietly loses its
+     typography, which is exactly what happened when these came from a CDN. */
+  --font-display: var(--font-clash), ui-sans-serif, system-ui, -apple-system,
+    sans-serif;
+  --font-sans: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+
+  --ease-cinematic: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Material chrome — for surfaces (rules, plates, edges). Free to go dark,
+   because nothing has to be read through it. */
+@theme {
+  --gradient-chrome-surface: linear-gradient(
+    115deg,
+    #f7f7f2 0%,
+    #a9a8a2 16%,
+    #ffffff 32%,
+    #7e7d78 50%,
+    #e6e5df 66%,
+    #96958f 84%,
+    #f2f1eb 100%
+  );
+}
+
+/* Legible chrome — for type. Same material, floor held at #c9c8c2 so the
+   dimmest point of the cycle is still brighter than body copy. The previous
+   ramp bottomed out at #6f6f6d, which is why the loudest words on the page
+   were the hardest to read; that was a bug in the ramp, not in the idea.
+
+   The ramp is a *seam-free loop*: it opens and closes on the exact same stop
+   (#c9c8c2). The sheen tiles (background-repeat) as it sweeps, so if the two
+   ends differ the tile boundary shows up as a hard vertical edge travelling
+   through the glyphs — the "shutter" look. Equal endpoints make the highlight
+   glide across as one continuous gradient with nothing behind it. */
+:root {
+  --gradient-chrome-text: linear-gradient(
+    100deg,
+    #c9c8c2 0%,
+    #ffffff 22%,
+    #dedcd6 40%,
+    #ffffff 58%,
+    #dedcd6 76%,
+    #c9c8c2 100%
+  );
+}
+
+html {
+  background: var(--color-midnight);
+  color: var(--color-white);
+  scroll-behavior: auto;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-white);
+  color: var(--color-midnight);
+}
+
+/* Editorial display type — heavy, confident */
+.display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.86;
+  text-wrap: balance;
+}
+
+/* Maximum weight — the hero words. Satoshi Black, tighter than tight. */
+.display-black {
+  font-family: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.045em;
+  line-height: 0.82;
+  text-wrap: balance;
+}
+
+/* Big statements sit over dark plates — give them a faint halo so the
+   letterforms read as lit, not flat. */
+.headline-lit {
+  text-shadow:
+    0 0 36px rgba(245, 245, 240, 0.11),
+    0 1px 0 rgba(0, 0, 0, 0.7);
+}
+
+.display-outline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.86;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(201, 204, 209, 0.4);
+}
+
+/* Mono label — thin, geometric, engineered */
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-silver);
+}
+
+/* Emphasis by light — the brightest phrase in a heading. Kept for lines that
+   sit beside a chrome line, so the two never compete for the same job. */
+.text-lit {
+  color: #ffffff;
+  text-shadow: 0 0 30px rgba(245, 245, 240, 0.32);
+}
+
+/* Chrome type — the accent, as a material.
+   Polished metal clipped to the glyphs and travelling slowly across them. The
+   ramp never drops below #c9c8c2, so the phrase stays the brightest thing in
+   its heading at every point in the cycle. */
+.text-chrome-sheen {
+  background: var(--gradient-chrome-text);
+  background-size: 260% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: chrome-sweep 8s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  /* The halo has to come from text-shadow, not filter: a `filter` on the same
+     element as `background-clip: text` makes Chrome rasterise the element's
+     background box before the text clip is applied, so the gradient paints as
+     a visible rectangle with the glyphs knocked out of it. */
+  text-shadow: 0 0 32px rgba(245, 245, 240, 0.24);
+}
+
+@keyframes chrome-sweep {
+  from {
+    background-position: 200% center;
+  }
+  to {
+    background-position: -60% center;
+  }
+}
+
+/* ------------------------------------------------------------
+   ENERGY-MASKED HERO WORD
+   White glyphs below, the WebGL energy canvas above with
+   mix-blend-mode: darken. min(canvas, below) leaves the near-black hero
+   untouched and reveals the energy only through the letterforms.
+   This is the one place on the site that is allowed real colour.
+------------------------------------------------------------ */
+.energy-word {
+  position: relative;
+  display: inline-block;
+}
+
+.energy-word .energy-word-text {
+  display: block;
+  color: #fff;
+  /* Black plate behind the glyphs: the canvas' darken blend resolves inside
+     the line's stacking context, so the backdrop must be black (not the page)
+     for the energy to clip to the letterforms. Invisible over the #080808 hero. */
+  background: #000;
+  text-shadow: none;
+}
+
+.energy-word canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: darken;
+  pointer-events: none;
+}
+
+/* No WebGL / reduced motion — a still of the same energy, clipped to the type. */
+.energy-word-fallback {
+  background: linear-gradient(115deg, #ff7a00 0%, #ff3d2e 30%, #d84bff 62%, #5aa7ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+/* ------------------------------------------------------------
+   CHROME UTILITIES — the accent applied to surfaces.
+------------------------------------------------------------ */
+
+/* A rule made of metal rather than of a fading white line. */
+.chrome-rule {
+  height: 1px;
+  background: var(--gradient-chrome-surface);
+  background-size: 220% auto;
+  opacity: 0.55;
+}
+
+/* A hairline edge that lights up as the eye passes — for cards and tiles. */
+.chrome-edge {
+  position: relative;
+}
+.chrome-edge::after {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  content: "";
+  pointer-events: none;
+  padding: 1px;
+  background: var(--gradient-chrome-surface);
+  background-size: 200% auto;
+  opacity: 0;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  transition: opacity 0.7s var(--ease-cinematic);
+}
+.group:hover .chrome-edge::after,
+.chrome-edge:hover::after {
+  opacity: 0.9;
+  animation: chrome-sweep 4.5s linear infinite;
+}
+
+/* Small engineered marker — status pills, indices, sector tags. */
+.chrome-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.34rem 0.7rem;
+  border: 1px solid rgba(245, 245, 240, 0.16);
+  background: rgba(245, 245, 240, 0.03);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-chrome);
+}
+
+/* Scroll cue — light descending the rule. Weight, not a bounce. */
+.scroll-cue {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(245, 245, 240, 0.85) 45%,
+    transparent 90%
+  );
+  background-size: 100% 220%;
+  animation: scroll-cue 2.8s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+@keyframes scroll-cue {
+  from {
+    background-position: 0 -110%;
+  }
+  to {
+    background-position: 0 110%;
+  }
+}
+
+/* Generative plates (Field) fill their frame. */
+.field-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Hairline — engineered dividers */
+.hairline {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(245, 245, 240, 0.25),
+    transparent
+  );
+}
+
+/* Smoked glass panel */
+.glass {
+  background: rgba(20, 20, 20, 0.78);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(245, 245, 240, 0.12);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.26);
+}
+
+/* Volumetric glow — the accent is light */
+.glow {
+  box-shadow:
+    0 0 80px rgba(245, 245, 240, 0.07),
+    0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Buttons illuminate */
+.btn-core {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  border: 1px solid rgba(245, 245, 240, 0.28);
+  background: transparent;
+  transition:
+    border-color 0.6s var(--ease-cinematic),
+    box-shadow 0.6s var(--ease-cinematic),
+    background 0.6s var(--ease-cinematic);
+}
+
+.btn-core:hover {
+  border-color: var(--color-white);
+  background: rgba(245, 245, 240, 0.06);
+  box-shadow:
+    0 0 40px rgba(245, 245, 240, 0.12),
+    inset 0 0 24px rgba(245, 245, 240, 0.04);
+}
+
+.btn-solid {
+  background: var(--color-white);
+  color: var(--color-midnight);
+  border-color: var(--color-white);
+}
+
+.btn-solid:hover {
+  background: var(--color-chrome);
+  color: var(--color-midnight);
+  box-shadow: 0 0 60px rgba(245, 245, 240, 0.2);
+}
+
+.cta-inverse {
+  display: inline-flex;
+  align-items: center;
+  padding: 1.1rem 2.2rem;
+  background: #080808;
+  color: #f5f5f0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: transform 0.45s var(--ease-cinematic), box-shadow 0.45s var(--ease-cinematic);
+}
+
+.cta-inverse:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Cursor light — chrome reflects movement */
+.card-lit {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-lit::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    500px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(245, 245, 240, 0.08),
+    transparent 45%
+  );
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-cinematic);
+  pointer-events: none;
+}
+
+.card-lit:hover::before {
+  opacity: 1;
+}
+
+/* Architectural depth — a room lit from a corner, not a sheet of graph paper.
+   The wireframe grid this replaces was applied to nine surfaces, which made
+   every section look like the same technical drawing; depth now comes from
+   where the light falls, which is also what the brand asks for. */
+.lit-room {
+  background:
+    radial-gradient(ellipse 60% 55% at 82% 8%, rgba(245, 245, 240, 0.055), transparent 68%),
+    radial-gradient(ellipse 52% 48% at 6% 88%, rgba(245, 245, 240, 0.035), transparent 70%);
+}
+
+/* Route curtain grain — the transition surface sits above the site-wide
+   <Noise> layer, so it can't borrow that texture. This gives the curtain the
+   same ashy grain over #080808 the rest of the app has, instead of a flat
+   #000 void. */
+.curtain-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Graphite panel — breaks the black into rooms */
+.panel {
+  background: linear-gradient(135deg, #151515 0%, #090909 58%, #171717 100%);
+  border-top: 1px solid rgba(245, 245, 240, 0.1);
+  border-bottom: 1px solid rgba(245, 245, 240, 0.06);
+}
+
+/* Big engineered stat. Chrome, but on the legible ramp — the figure the
+   section exists to state must never be its dimmest element. */
+.stat-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  background: var(--gradient-chrome-text);
+  background-size: 240% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: chrome-sweep 9s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+/* Ticker marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 36s linear infinite;
+}
+
+/* Grain — material, never plastic */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Monochrome atmosphere — depth without a colour cast. */
+.aurora {
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  filter: blur(44px) saturate(115%);
+  opacity: 0.5;
+}
+
+.aurora::before,
+.aurora::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      38% 46% at 22% 32%,
+      rgba(245, 245, 240, 0.12),
+      transparent 70%
+    ),
+    radial-gradient(
+      34% 40% at 78% 66%,
+      rgba(245, 245, 240, 0.07),
+      transparent 72%
+    );
+  animation: drift 26s ease-in-out infinite alternate;
+}
+.aurora::after {
+  background:
+    radial-gradient(
+      30% 34% at 68% 24%,
+      rgba(245, 245, 240, 0.09),
+      transparent 70%
+    ),
+    radial-gradient(
+      40% 44% at 30% 76%,
+      rgba(245, 245, 240, 0.04),
+      transparent 74%
+    );
+  animation-duration: 34s;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes drift {
+  from {
+    transform: translate3d(-3%, -2%, 0) scale(1.05);
+  }
+  to {
+    transform: translate3d(4%, 3%, 0) scale(1.15);
+  }
+}
+
+/* Section texture — atmosphere only. A faint, off-axis wash so a dark section
+   reads as a lit space rather than as a void. No line-work. */
+.section-tex {
+  position: relative;
+  isolation: isolate;
+}
+.section-tex::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 55% 60% at 88% 4%, rgba(245, 245, 240, 0.05), transparent 66%),
+    radial-gradient(ellipse 48% 52% at 4% 92%, rgba(245, 245, 240, 0.03), transparent 68%);
+}
+
+/* Bone-white editorial chapter — a measured pause between the dark rooms. */
+.landing-bone {
+  position: relative;
+  isolation: isolate;
+  color: #080808;
+  background: #f1efe7;
+  border-block: 1px solid rgba(8, 8, 8, 0.18);
+}
+
+.landing-bone::before,
+.landing-bone::after {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+}
+
+.landing-bone::before {
+  inset: 0;
+  opacity: 0.8;
+  background:
+    radial-gradient(ellipse 52% 72% at 100% 42%, rgba(8, 8, 8, 0.1), transparent 70%),
+    radial-gradient(ellipse 40% 50% at 0% 100%, rgba(8, 8, 8, 0.06), transparent 72%);
+}
+
+.landing-bone::after {
+  right: clamp(-9rem, -2vw, -2rem);
+  bottom: clamp(-1rem, 4vw, 5rem);
+  color: rgba(8, 8, 8, 0.045);
+  content: "ASTRALYN / 01";
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 13vw, 13rem);
+  font-weight: 700;
+  letter-spacing: -0.07em;
+  line-height: 0.7;
+  white-space: nowrap;
+}
+
+.landing-bone .label {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  color: rgba(8, 8, 8, 0.64);
+}
+
+.landing-bone .label::before {
+  width: 2.5rem;
+  height: 1px;
+  content: "";
+  background: #080808;
+}
+
+.landing-bone__headline,
+.landing-bone .display {
+  color: #080808;
+  text-shadow: none;
+}
+
+.landing-bone__headline {
+  font-weight: 800;
+}
+
+.landing-bone .display-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(8, 8, 8, 0.38);
+}
+
+.landing-bone .hairline {
+  background: linear-gradient(90deg, transparent, rgba(8, 8, 8, 0.34), transparent);
+}
+
+.landing-bone .img-frame {
+  border-color: rgba(8, 8, 8, 0.74);
+  box-shadow: 10px 10px 0 rgba(8, 8, 8, 0.1);
+}
+
+/* Framed imagery — chrome edge + cinematic grade, so photos read as
+   engineered artifacts, not stock. */
+.img-frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(245, 245, 240, 0.15);
+  background: var(--color-graphite);
+}
+.img-frame img,
+.img-frame > svg,
+.img-frame > .art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.12);
+}
+.img-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      transparent 40%,
+      rgba(0, 0, 0, 0.62) 100%
+    ),
+    radial-gradient(
+      120% 100% at 20% 0%,
+      rgba(245, 245, 240, 0.05),
+      transparent 55%
+    ),
+    radial-gradient(
+      120% 100% at 100% 100%,
+      rgba(245, 245, 240, 0.04),
+      transparent 55%
+    );
+  mix-blend-mode: normal;
+}
+.img-frame .cap {
+  position: absolute;
+  left: 1.25rem;
+  bottom: 1.1rem;
+  z-index: 2;
+}
+
+/* Generative plate. The photo treatment above assumes a bright subject that
+   needs holding down; line-work needs the opposite, so the vignette is lifted
+   and only the caption keeps its shelf of shade. */
+.img-frame--plate::after {
+  background:
+    linear-gradient(180deg, transparent 70%, rgba(0, 0, 0, 0.38) 100%),
+    radial-gradient(135% 115% at 50% 50%, transparent 58%, rgba(0, 0, 0, 0.26) 100%);
+}
+
+/* Corner ticks — the frame reads as an instrument, not a container. Rendered
+   as markup by <Plate>, because `.card-lit::before` already owns the cursor
+   light on these same elements. */
+.plate-tick {
+  position: absolute;
+  z-index: 2;
+  width: 0.7rem;
+  height: 0.7rem;
+  pointer-events: none;
+  border-color: rgba(245, 245, 240, 0.4);
+  transition: border-color 0.6s var(--ease-cinematic);
+}
+
+.group:hover .plate-tick {
+  border-color: rgba(245, 245, 240, 0.85);
+}
+
+/* Captions sit on intentionally dark media, so keep the type legible even
+   though the site-wide white token is now ink. */
+.img-frame .cap,
+.img-frame .cap * {
+  color: #f5f5f0 !important;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.42);
+}
+
+/* Brushed-metal plate */
+.chrome-plate {
+  background: var(--gradient-chrome-surface);
+  border: 1px solid rgba(245, 245, 240, 0.12);
+}
+
+/* Hero core glow — faint cyan-white halo behind the WebGL core. */
+.core-halo {
+  background: radial-gradient(
+    ellipse 42% 42% at 50% 47%,
+    rgba(245, 245, 240, 0.13),
+    rgba(245, 245, 240, 0.05) 40%,
+    transparent 68%
+  );
+}
+
+/* Marquee — reversed variant */
+.marquee-track.reverse {
+  animation-direction: reverse;
+}
+
+/* ------------------------------------------------------------
+   HERO LAB — gradient-animation keyframes (Aceternity blobs)
+   + a shared film-noise overlay. Consumed by /heroes/* iterations.
+------------------------------------------------------------ */
+@theme {
+  --animate-first: moveVertical 30s ease infinite;
+  --animate-second: moveInCircle 20s reverse infinite;
+  --animate-third: moveInCircle 40s linear infinite;
+  --animate-fourth: moveHorizontal 40s ease infinite;
+  --animate-fifth: moveInCircle 20s ease infinite;
+}
+
+@keyframes moveHorizontal {
+  0% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+  50% {
+    transform: translateX(50%) translateY(10%);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+}
+@keyframes moveInCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes moveVertical {
+  0% {
+    transform: translateY(-50%);
+  }
+  50% {
+    transform: translateY(50%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+/* Live static — the <Noise /> canvas, fixed over the whole viewport.
+   Replaces the printed-on .grain texture with grain that actually moves. */
+.noise-live {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  image-rendering: pixelated;
+}
+
+/* Film-noise overlay — apply to an absolutely-positioned div over a hero. */
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 260px 260px;
+  opacity: 0.055;
+  mix-blend-mode: multiply;
+}
+
+/* ------------------------------------------------------------
+   COMPOSITION
+   Reusable layers make the long form pages read as a continuous journey:
+   paper sections tuck beneath the preceding chapter rather than appearing
+   as disconnected blocks.
+------------------------------------------------------------- */
+.chapter-surface {
+  position: relative;
+  margin-top: -2.5rem;
+  border-radius: 2rem 2rem 0 0;
+  background: var(--color-midnight);
+  box-shadow: 0 -1px 0 rgba(245, 245, 240, 0.1), 0 -24px 70px rgba(0, 0, 0, 0.5);
+}
+
+.chapter-surface::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 86% 12%, rgba(245, 245, 240, 0.06), transparent 25rem),
+    radial-gradient(circle at 8% 70%, rgba(245, 245, 240, 0.04), transparent 26rem);
+}
+
+.chapter-surface > * {
+  position: relative;
+}
+
+.editorial-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-silver);
+}
+
+.editorial-kicker::before {
+  width: 2.75rem;
+  height: 1px;
+  content: "";
+  background: var(--gradient-chrome-surface);
+}
+
+/* ------------------------------------------------------------
+   THE HERO OBJECT
+   The brief opens on "a metallic object" — not on a headline over texture.
+   The mark is rendered by <MetallicPaint> (WebGL liquid chrome) and drifts
+   on its own axis, so the first thing the site does is behave like metal.
+------------------------------------------------------------ */
+.hero-metal-logo {
+  position: absolute;
+  right: clamp(-12rem, -4vw, -2rem);
+  top: 50%;
+  z-index: 0;
+  pointer-events: none;
+  width: clamp(22rem, 45vw, 48rem);
+  aspect-ratio: 1;
+  transform: translateY(-50%);
+  filter: drop-shadow(0 1.5rem 3rem rgba(0, 0, 0, 0.46));
+  animation: logo-drift 18s ease-in-out infinite alternate;
+}
+
+.hero-metal-logo::before {
+  position: absolute;
+  inset: 13%;
+  content: "";
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245, 245, 240, 0.12), transparent 68%);
+  filter: blur(2.5rem);
+}
+
+.hero-metal-logo__outline,
+.hero-metal-logo__paint {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-metal-logo__outline {
+  display: block;
+  overflow: visible;
+}
+
+.hero-metal-logo__paint {
+  overflow: hidden;
+}
+
+@keyframes logo-drift {
+  from {
+    transform: translateY(-52%) rotate(-4deg);
+  }
+  to {
+    transform: translateY(-46%) rotate(5deg);
+  }
+}
+
+/* ------------------------------------------------------------
+   CLIENT TILE — the work wall.
+   What we did stays private; who we did it for does not. Logos rest as
+   brushed metal and return to their own colour when the eye lands on them,
+   so the wall reads as one material until the visitor engages with it.
+------------------------------------------------------------ */
+.client-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  min-height: 15rem;
+  padding: 1.75rem;
+  border: 1px solid rgba(245, 245, 240, 0.1);
+  background: linear-gradient(150deg, rgba(24, 24, 24, 0.9), rgba(9, 9, 9, 0.95));
+  transition:
+    border-color 0.7s var(--ease-cinematic),
+    transform 0.7s var(--ease-cinematic),
+    box-shadow 0.7s var(--ease-cinematic);
+}
+
+.client-tile:hover {
+  transform: translateY(-4px);
+  border-color: rgba(245, 245, 240, 0.24);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* The specular bar that crosses the tile on hover — the chrome "sweep". */
+.client-tile::before {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 38%,
+    rgba(245, 245, 240, 0.14) 48%,
+    rgba(245, 245, 240, 0.3) 52%,
+    transparent 62%
+  );
+  background-size: 280% 100%;
+  background-position: 180% center;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-cinematic);
+}
+
+.client-tile:hover::before {
+  opacity: 1;
+  animation: tile-sweep 1.15s var(--ease-cinematic) forwards;
+}
+
+@keyframes tile-sweep {
+  from {
+    background-position: 180% center;
+  }
+  to {
+    background-position: -80% center;
+  }
+}
+
+.client-tile__logo {
+  display: block;
+  width: auto;
+  max-width: 78%;
+  max-height: 3.4rem;
+  object-fit: contain;
+  object-position: left center;
+  /* Metal at rest, the client's own identity on approach. */
+  filter: grayscale(1) brightness(1.9) contrast(0.82) opacity(0.62);
+  transition:
+    filter 0.75s var(--ease-cinematic),
+    transform 0.75s var(--ease-cinematic);
+}
+
+.client-tile:hover .client-tile__logo {
+  filter: grayscale(0) brightness(1.04) contrast(1) opacity(1);
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* Clients whose mark we do not hold — set the name instead, in the same
+   material, so the wall never shows a broken tile or a placeholder box. */
+.client-tile__wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  background: var(--gradient-chrome-text);
+  background-size: 240% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 0.72;
+  transition: opacity 0.75s var(--ease-cinematic);
+}
+
+.client-tile:hover .client-tile__wordmark {
+  opacity: 1;
+  animation: chrome-sweep 5s linear infinite;
+}
+
+.manifesto-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(11rem, 0.38fr) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 8rem);
+  min-height: 29rem;
+  padding: clamp(2rem, 6vw, 6rem);
+  overflow: hidden;
+  border: 1px solid rgba(245, 245, 240, 0.16);
+  background:
+    linear-gradient(110deg, rgba(22, 22, 22, 0.98), rgba(7, 7, 7, 0.96)),
+    var(--color-midnight);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.42);
+}
+
+.manifesto-card::before {
+  position: absolute;
+  right: -8rem;
+  bottom: -10rem;
+  width: 29rem;
+  aspect-ratio: 1;
+  content: "";
+  border: 1px solid rgba(245, 245, 240, 0.2);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4rem rgba(245, 245, 240, 0.025), 0 0 0 9rem rgba(245, 245, 240, 0.015);
+}
+
+.belief-index,
+.belief-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.belief-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+@media (max-width: 767px) {
+  .hero-metal-logo {
+    right: -10rem;
+    top: 58%;
+    width: clamp(22rem, 94vw, 32rem);
+    opacity: 0.5;
+  }
+  .chapter-surface { margin-top: -1.5rem; border-radius: 1.25rem 1.25rem 0 0; }
+  .manifesto-card {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    min-height: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-metal-logo { animation: none; }
+}
+
+/* ------------------------------------------------------------
+   OPERATOR DOSSIER — the founder detail takeover.
+   A surveillance/HUD language: a portrait under a scanning reticle,
+   decrypting data fields, a grid of telemetry. Built for the
+   list → full-page transition on /team.
+------------------------------------------------------------ */
+
+/* Vertical sweep passing over the portrait — the "scan". */
+@keyframes dossier-scan {
+  0% { transform: translateY(-8%); opacity: 0; }
+  12% { opacity: 0.85; }
+  88% { opacity: 0.85; }
+  100% { transform: translateY(108%); opacity: 0; }
+}
+.dossier-scan {
+  animation: dossier-scan 3.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* CRT-style horizontal scanlines over the media. */
+.dossier-scanlines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(245, 245, 240, 0.05) 0px,
+    rgba(245, 245, 240, 0.05) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* Reticle breathing — never quite still, like a live lock. */
+@keyframes reticle-pulse {
+  0%, 100% { opacity: 0.55; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+}
+.reticle-pulse {
+  animation: reticle-pulse 2.8s ease-in-out infinite;
+}
+
+/* Status light — a slow blink for ACTIVE / LOCKED readouts. */
+@keyframes status-blink {
+  0%, 68%, 100% { opacity: 1; }
+  75%, 92% { opacity: 0.25; }
+}
+.status-blink {
+  animation: status-blink 2.4s steps(1, end) infinite;
+}
+
+/* Faint telemetry wash behind the dossier. The scanlines over the portrait
+   already carry the instrument language; a second grid behind them was noise. */
+.dossier-grid {
+  background:
+    radial-gradient(ellipse 60% 50% at 84% 6%, rgba(245, 245, 240, 0.05), transparent 66%),
+    radial-gradient(ellipse 50% 46% at 8% 94%, rgba(245, 245, 240, 0.03), transparent 70%);
+}
+
+/* Indeterminate loading strip (route loading.tsx) */
+@keyframes loadingStrip {
+  0% {
+    transform: translateX(-130%);
+  }
+  100% {
+    transform: translateX(380%);
+  }
+}
+.loading-strip {
+  animation: loadingStrip 1.1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,3 +1,10 @@
+# dependencies / build
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
 # working backups / scratch
 nelson.original.backup.jpg
 *.backup.jpg
@@ -6,9 +13,3 @@ nelson.original.backup.jpg
 .DS_Store
 Thumbs.db
 *.log
-
-# dependencies / build (also covered by site/.gitignore)
-node_modules/
-.next/
-out/
-*.tsbuildinfo
