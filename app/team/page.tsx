@@ -395,7 +395,7 @@ function Roster() {
       <Reveal>
         <p className="label mb-8">The House</p>
         <h2 className="display headline-lit max-w-3xl text-[clamp(2.2rem,5.5vw,4.5rem)]">
-          The rest of the team.
+          Behind the scenes.
         </h2>
       </Reveal>
       <Reveal delay={0.15}>

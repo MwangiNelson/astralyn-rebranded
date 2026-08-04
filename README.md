@@ -27,7 +27,6 @@ Next.js 15 (App Router) · React 19 · Tailwind CSS v4 · Framer Motion 12 · Re
 | `/work` | The client wall — logo, name, sector, link. Detail stays private by design |
 | `/lab` | Research index with mono status tags |
 | `/team` | Founders as an elastic strip (click twice for the dossier), then the house roster by discipline. `/founders` redirects here |
-| `/partners` | Quiet engineered advisor register |
 | `/start` | Multi-step intake — "Signal received." |
 | `/contact` | Near-empty room. "Speak with Astralyn." |
 

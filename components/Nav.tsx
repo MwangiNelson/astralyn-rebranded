@@ -20,7 +20,6 @@ const PREVIEW: Record<string, FieldVariant> = {
   "/work": "compound",
   "/lab": "scan",
   "/team": "network",
-  "/partners": "flow",
   "/contact": "radiate",
 };
 
