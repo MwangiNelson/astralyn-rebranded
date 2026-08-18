@@ -32,6 +32,9 @@ export type Product = {
   core: string[];
   /** Landing-page one-liner. */
   line: string;
+  /** The product's own site, once it has one. Present means this page stops
+   *  doing the selling and hands off to it. */
+  site?: string;
 };
 
 export const PRODUCTS: Product[] = [
@@ -76,6 +79,7 @@ export const PRODUCTS: Product[] = [
     stack: "Next.js · Postgres · Row-level tenancy · Event sourcing",
     core: ["Aegis", "Rail", "Signal", "Vault", "Meter"],
     line: "Leases, invoices, arrears and repairs — one ledger per building, always current.",
+    site: "https://tenure.astralyngroup.com",
   },
   {
     index: "03",

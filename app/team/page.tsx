@@ -429,7 +429,7 @@ function Roster() {
                     key={`${m.name}-${m.role}`}
                     className="group grid grid-cols-[auto_minmax(0,1fr)] items-center gap-x-5 gap-y-3 border-t border-white/[0.07] py-5 sm:grid-cols-[auto_minmax(0,1fr)_auto]"
                   >
-                    <RoleIcon kind={m.kind} plated />
+                    <RoleIcon kind={m.kind} glyph={m.glyph} plated />
                     <div className="min-w-0">
                       <p className="display truncate text-lg text-white transition-colors duration-500 group-hover:text-chrome md:text-xl">
                         {m.name}

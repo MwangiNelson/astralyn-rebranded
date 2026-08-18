@@ -154,12 +154,23 @@ function ProductLaunch({ product }: { product: Product }) {
                 ))}
               </div>
 
-              <Link
-                href={CTA.href}
-                className="btn-core mt-10 w-full justify-center"
-              >
-                {product.status === "Live" ? "Request access" : "Register interest"}
-              </Link>
+              {product.site ? (
+                <a
+                  href={product.site}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-core mt-10 w-full justify-center"
+                >
+                  Visit {product.name}
+                </a>
+              ) : (
+                <Link
+                  href={CTA.href}
+                  className="btn-core mt-10 w-full justify-center"
+                >
+                  {product.status === "Live" ? "Request access" : "Register interest"}
+                </Link>
+              )}
             </Reveal>
           </div>
         </div>

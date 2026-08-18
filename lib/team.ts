@@ -90,6 +90,9 @@ export type TeamMember = {
   role: string;
   /** The discipline they're filed under. Drives icon + grouping. */
   kind: RoleKind;
+  /** ponytail: optional glyph override for people whose craft doesn't match
+   *  the discipline they're filed under. Add literals as they're needed. */
+  glyph?: "art";
   /** Optional. Omitted entries simply render no links. */
   socials?: Social[];
 };
@@ -116,6 +119,16 @@ export const TEAM: TeamMember[] = [
         kind: "linkedin",
         href: "https://www.linkedin.com/in/abigael-kirwa-40647219b/",
       },
+    ],
+  },
+  {
+    name: "Natasha Wangui Gichuhi",
+    role: "Frontend Consultant & Creative Consultant",
+    kind: "consultant",
+    glyph: "art",
+    socials: [
+      { kind: "linkedin", href: "https://www.linkedin.com/in/natasha-gichuhi/" },
+      { kind: "website", href: "https://gichuhi-wangui.vercel.app/" },
     ],
   },
   {

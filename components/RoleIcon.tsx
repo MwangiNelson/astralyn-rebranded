@@ -13,6 +13,7 @@ import {
   InstagramLogoIcon,
   LighthouseIcon,
   LinkedinLogoIcon,
+  PaintBrushIcon,
   PenNibIcon,
   ScalesIcon,
   ShieldCheckIcon,
@@ -21,7 +22,7 @@ import {
   XLogoIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import type { Icon } from "@phosphor-icons/react";
-import { ROLE_META, type RoleKind, type SocialKind } from "@/lib/team";
+import { ROLE_META, type RoleKind, type SocialKind, type TeamMember } from "@/lib/team";
 
 /* ------------------------------------------------------------
    ROLE ICON — the glyph that stands in for a discipline.
@@ -50,6 +51,11 @@ const ROLE_GLYPH: Record<RoleKind, Icon> = {
   advisor: LighthouseIcon, // fixed light, seen from a distance
 };
 
+/** Per-person overrides, for craft that the discipline glyph doesn't cover. */
+const EXTRA_GLYPH: Record<NonNullable<TeamMember["glyph"]>, Icon> = {
+  art: PaintBrushIcon,
+};
+
 const SOCIAL_GLYPH: Record<SocialKind, Icon> = {
   linkedin: LinkedinLogoIcon,
   x: XLogoIcon,
@@ -76,16 +82,18 @@ export const SOCIAL_LABEL: Record<SocialKind, string> = {
  *  for roster rows; bare is for inline use in headings. */
 export function RoleIcon({
   kind,
+  glyph,
   size = 20,
   plated = false,
   className = "",
 }: {
   kind: RoleKind;
+  glyph?: TeamMember["glyph"];
   size?: number;
   plated?: boolean;
   className?: string;
 }) {
-  const Glyph = ROLE_GLYPH[kind];
+  const Glyph = glyph ? EXTRA_GLYPH[glyph] : ROLE_GLYPH[kind];
   const mark = (
     <Glyph
       size={size}
