@@ -49,22 +49,12 @@ const BELIEFS = [
   },
 ];
 
-const DISCIPLINES = [
-  {
-    n: "01",
-    title: "Strategy",
-    line: "We find the opportunity, make the hard choices and give the work a clear direction before anything is made.",
-  },
-  {
-    n: "02",
-    title: "Design",
-    line: "We turn complexity into an experience people can understand, trust and want to use.",
-  },
-  {
-    n: "03",
-    title: "Technology",
-    line: "We build the products, platforms and systems that make the new direction real at scale.",
-  },
+/* Plain-language account of the company — read, not scanned. */
+const WHAT_WE_DO = [
+  "Most teams come to us with something half-formed: a market they want to enter, a process that has outgrown its tools, or a product that needs to exist but doesn't yet. We start by understanding the business behind it — who it serves, where the real opportunity is, and what has to be true for it to succeed. That becomes the strategy, and everything else is built on it.",
+  "From there, the same team designs and builds the thing. We shape the brand and the product experience so people understand it and trust it, then engineer the software, platforms and AI systems that run it — from the first prototype through to enterprise scale. Because strategy, design and engineering sit under one roof, nothing gets lost in a handover, and one team stays accountable for the result.",
+  "We also build for ourselves. Alongside client work, Astralyn develops its own portfolio of products, held to the same standard we bring to every engagement. It keeps our thinking sharp and our engineering honest — we know what it takes to ship because we do it with our own name on the line.",
+  "We take on a small number of partners at a time: founders and enterprise teams who care about doing it properly, and who want a collaborator for the long run rather than a vendor for the next sprint.",
 ];
 
 /* A single belief is a compact, tactile chapter — not an empty full screen. */
@@ -197,29 +187,32 @@ export default function Manifesto() {
 
       {/* ---------------- WHAT WE DO ---------------- */}
       <section className="relative bg-white py-28 text-black md:py-40">
-        <div className="mx-auto max-w-[1600px] px-6 md:px-12">
-          <Reveal>
+        <div className="mx-auto grid max-w-[1600px] gap-14 px-6 md:grid-cols-[0.85fr_1.15fr] md:gap-20 md:px-12">
+          <Reveal className="md:sticky md:top-32 md:self-start">
             <p className="font-mono text-[0.68rem] tracking-[0.28em] text-black/55 uppercase">
-              How we make it real
+              What Astralyn does
             </p>
-            <h2 className="display mt-7 max-w-4xl text-[clamp(3.5rem,8vw,8rem)] uppercase">
-              Three disciplines.<br />One accountable team.
+            <h2 className="display mt-7 text-[clamp(3rem,6vw,6rem)] uppercase">
+              In plain<br />terms.
             </h2>
           </Reveal>
-          <div className="mt-20 border-t border-black/20">
-            {DISCIPLINES.map((discipline, index) => (
-              <Reveal key={discipline.title} delay={index * 0.1}>
-                <article className="grid gap-6 border-b border-black/20 py-10 md:grid-cols-[8rem_1fr_minmax(16rem,0.6fr)] md:items-end md:py-14">
-                  <p className="font-mono text-sm text-black/50">{discipline.n}</p>
-                  <h3 className="display text-[clamp(3rem,6vw,6rem)] uppercase">
-                    {discipline.title}
-                  </h3>
-                  <p className="max-w-md text-base leading-relaxed text-black/65">
-                    {discipline.line}
+          <div className="max-w-2xl">
+            <Reveal>
+              <p className="text-[clamp(1.4rem,2.4vw,2rem)] leading-snug text-black">
+                Astralyn is a technology strategy, design and software engineering
+                company. We help startups and established businesses turn ambitious
+                ideas into products that work — and keep working.
+              </p>
+            </Reveal>
+            <div className="mt-12 space-y-7 border-t border-black/20 pt-12">
+              {WHAT_WE_DO.map((paragraph, index) => (
+                <Reveal key={index} delay={index * 0.06}>
+                  <p className="text-base leading-relaxed text-black/70 md:text-lg">
+                    {paragraph}
                   </p>
-                </article>
-              </Reveal>
-            ))}
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>
