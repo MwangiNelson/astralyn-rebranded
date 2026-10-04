@@ -39,25 +39,6 @@ export type Product = {
 export const PRODUCTS: Product[] = [
   {
     index: "01",
-    name: "Relay",
-    category: "Fleet & Transport Operations",
-    status: "Live",
-    headline: ["Every shilling a vehicle earns.", "Every document that keeps it moving."],
-    problem:
-      "A fleet owner learns what a vehicle made when the day is already over, from a notebook, a phone call, or nothing at all. Insurance lapses, inspections expire, and the first anyone knows is a roadblock and an impounded vehicle.",
-    solution:
-      "Relay records the day as it happens — driver, vehicle, route, collection, expense — and closes each vehicle's books nightly. Every compliance date the vehicle carries is tracked to the day it expires, and warns long before it does. The owner opens one screen and knows.",
-    audience: "SACCOs, owner-operators and logistics fleets",
-    pillars: [
-      "Daily collections & deficits",
-      "Driver & vehicle registry",
-      "Compliance expiry calendar",
-      "Owner reporting",
-    ],
-    line: "The day's takings, the vehicle's papers, and the driver behind both — closed nightly.",
-  },
-  {
-    index: "02",
     name: "Nyumbisha",
     category: "WhatsApp & M-Pesa Rent Collection",
     status: "In Build",
@@ -76,6 +57,25 @@ export const PRODUCTS: Product[] = [
     line: "Bill tenants, collect by M-Pesa and match every payment, in the chat they already use.",
     site: "https://nyumbisha.astralyngroup.com",
     image: "/products/nyumbisha.webp",
+  },
+  {
+    index: "02",
+    name: "Relay",
+    category: "Fleet & Transport Operations",
+    status: "Live",
+    headline: ["Every shilling a vehicle earns.", "Every document that keeps it moving."],
+    problem:
+      "A fleet owner learns what a vehicle made when the day is already over, from a notebook, a phone call, or nothing at all. Insurance lapses, inspections expire, and the first anyone knows is a roadblock and an impounded vehicle.",
+    solution:
+      "Relay records the day as it happens — driver, vehicle, route, collection, expense — and closes each vehicle's books nightly. Every compliance date the vehicle carries is tracked to the day it expires, and warns long before it does. The owner opens one screen and knows.",
+    audience: "SACCOs, owner-operators and logistics fleets",
+    pillars: [
+      "Daily collections & deficits",
+      "Driver & vehicle registry",
+      "Compliance expiry calendar",
+      "Owner reporting",
+    ],
+    line: "The day's takings, the vehicle's papers, and the driver behind both — closed nightly.",
   },
   {
     index: "03",

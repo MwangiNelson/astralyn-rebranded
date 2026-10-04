@@ -62,7 +62,7 @@ const CHAPTERS: {
     n: "05",
     title: "Products",
     line: "Ideas become industry. Power radiates outward into markets.",
-    tags: ["Relay", "Nyumbisha", "Ledger"],
+    tags: ["Nyumbisha", "Relay", "Ledger"],
     field: "radiate",
     readout: "Emission / outward",
   },
