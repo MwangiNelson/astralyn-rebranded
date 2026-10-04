@@ -59,7 +59,7 @@ export const PRODUCTS: Product[] = [
   {
     index: "02",
     name: "Nyumbisha",
-    category: "Rental & Property Operations",
+    category: "WhatsApp & M-Pesa Rent Collection",
     status: "In Build",
     headline: ["Rent and receipts,", "handled on WhatsApp."],
     problem:
@@ -68,10 +68,10 @@ export const PRODUCTS: Product[] = [
       "Nyumbisha runs rent in the chat tenants already use. Bills and reminders go out on WhatsApp, with SMS as backup. The tenant pays from an M-Pesa prompt on their own phone, and the money lands in the landlord's M-Pesa or bank without passing through us. Every payment is matched to its tenant and unit, part payments included, and the receipt goes back on WhatsApp. Tenants install nothing.",
     audience: "Landlords, managing agents and property firms",
     pillars: [
-      "Leases, units & tenants",
-      "Automated invoicing & arrears",
-      "Payment reconciliation",
-      "Maintenance & deposits",
+      "WhatsApp bills & receipts",
+      "M-Pesa straight to the landlord",
+      "Automatic payment matching",
+      "Tenant move-in on WhatsApp",
     ],
     line: "Bill tenants, collect by M-Pesa and match every payment, in the chat they already use.",
     site: "https://nyumbisha.astralyngroup.com",
