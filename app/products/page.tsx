@@ -140,28 +140,6 @@ function ProductLaunch({ product }: { product: Product }) {
                 {product.audience}
               </p>
 
-              {product.stack && (
-                <>
-                  <p className="label mt-8 mb-3">Technology</p>
-                  <p className="font-mono text-[0.7rem] leading-relaxed tracking-[0.12em] text-silver uppercase">
-                    {product.stack}
-                  </p>
-                </>
-              )}
-
-              {product.core && (
-                <>
-                  <p className="label mt-8 mb-3">Runs on Core</p>
-                  <div className="flex flex-wrap gap-2">
-                    {product.core.map((c) => (
-                      <span key={c} className="chrome-badge">
-                        {c}
-                      </span>
-                    ))}
-                  </div>
-                </>
-              )}
-
               {product.site ? (
                 <a
                   href={product.site}

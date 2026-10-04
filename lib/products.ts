@@ -27,10 +27,6 @@ export type Product = {
   audience: string;
   /** Capabilities, not features — four is the limit. */
   pillars: string[];
-  /** Absent once the product has its own site to explain itself. */
-  stack?: string;
-  /** Which Core services it consumes. Proves the platform is real. */
-  core?: string[];
   /** Landing-page one-liner. */
   line: string;
   /** The product's own site, once it has one. Present means this page stops
@@ -58,8 +54,6 @@ export const PRODUCTS: Product[] = [
       "Compliance expiry calendar",
       "Owner reporting",
     ],
-    stack: "FastAPI · Postgres · Redis · React · Alembic",
-    core: ["Aegis", "Rail", "Signal", "Trace"],
     line: "The day's takings, the vehicle's papers, and the driver behind both — closed nightly.",
   },
   {
@@ -100,8 +94,6 @@ export const PRODUCTS: Product[] = [
       "Exception queues",
       "Settlement & payouts",
     ],
-    stack: "Go · Postgres · Double-entry ledger · Idempotent webhooks",
-    core: ["Aegis", "Rail", "Signal", "Trace"],
     line: "Every payment matched to a customer and an invoice the moment it lands.",
   },
   {
@@ -121,8 +113,6 @@ export const PRODUCTS: Product[] = [
       "Transactional, not chatty",
       "Clean human handoff",
     ],
-    stack: "Python · LLM orchestration · Retrieval over tenant data · WhatsApp Cloud API",
-    core: ["Aegis", "Signal", "Rail", "Trace"],
     line: "An agent that answers with your data, on the channel your customers already use.",
   },
   {
@@ -142,8 +132,6 @@ export const PRODUCTS: Product[] = [
       "Task dispatch",
       "Payroll-ready timesheets",
     ],
-    stack: "Next.js · Postgres · PostGIS · Offline-first mobile",
-    core: ["Aegis", "Signal", "Meter", "Trace"],
     line: "Plan the shift, verify the clock-in, and hand payroll a timesheet it can trust.",
   },
 ];
