@@ -23,7 +23,7 @@ Next.js 15 (App Router) · React 19 · Tailwind CSS v4 · Framer Motion 12 · Re
 | `/` | Hero Power Core (R3F, scroll-driven activation) + transformation chapters |
 | `/manifesto` | Cinematic belief rooms, massive editorial type |
 | `/capabilities` | Strategy / Design / Technology expanding pillars |
-| `/products` | Launch-style chapters for the suite (Relay, Tenure, Ledger, Concierge, Roster) + Astralyn Core |
+| `/products` | Launch-style chapters for the suite (Relay, Nyumbisha, Ledger, Concierge, Roster) + Astralyn Core |
 | `/work` | The client wall — logo, name, sector, link. Detail stays private by design |
 | `/lab` | Research index with mono status tags |
 | `/team` | Founders as an elastic strip (click twice for the dossier), then the house roster by discipline. `/founders` redirects here |

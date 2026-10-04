@@ -23,7 +23,6 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 /** The plate each product draws — matched to what the product actually does. */
 const FIELD: Record<string, FieldVariant> = {
   Relay: "flow",
-  Tenure: "frame",
   Ledger: "vector",
   Concierge: "network",
   Roster: "radiate",
@@ -128,8 +127,9 @@ function ProductLaunch({ product }: { product: Product }) {
                 variant={FIELD[product.name] ?? "network"}
                 seed={product.name.length * 13 + 7}
                 className="aspect-[16/11] w-full"
-                label={product.name}
-                readout={product.category}
+                image={product.image}
+                label={product.image ? undefined : product.name}
+                readout={product.image ? undefined : product.category}
               />
             </MaskWipe>
 

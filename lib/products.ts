@@ -35,6 +35,8 @@ export type Product = {
   /** The product's own site, once it has one. Present means this page stops
    *  doing the selling and hands off to it. */
   site?: string;
+  /** A screenshot of that site. Present means the plate shows it instead of a Field. */
+  image?: string;
 };
 
 export const PRODUCTS: Product[] = [
@@ -61,14 +63,14 @@ export const PRODUCTS: Product[] = [
   },
   {
     index: "02",
-    name: "Tenure",
+    name: "Nyumbisha",
     category: "Rental & Property Operations",
     status: "In Build",
     headline: ["Rent is a schedule.", "Chasing it should not be a job."],
     problem:
       "A landlord with thirty units runs them on a spreadsheet, a phone and memory. Rent arrives across four channels and reconciles against none of them. Arrears are discovered late, deposits are disputed from recollection, and maintenance lives in a WhatsApp thread nobody owns.",
     solution:
-      "Tenure holds the lease as the source of truth. Invoices raise themselves on schedule, payments match themselves against the tenant who sent them, arrears escalate on their own, and every deposit, notice and repair is filed against the unit it belongs to. The statement is always current.",
+      "Nyumbisha holds the lease as the source of truth. Invoices raise themselves on schedule, payments match themselves against the tenant who sent them, arrears escalate on their own, and every deposit, notice and repair is filed against the unit it belongs to. The statement is always current.",
     audience: "Landlords, managing agents and property firms",
     pillars: [
       "Leases, units & tenants",
@@ -79,7 +81,8 @@ export const PRODUCTS: Product[] = [
     stack: "Next.js · Postgres · Row-level tenancy · Event sourcing",
     core: ["Aegis", "Rail", "Signal", "Vault", "Meter"],
     line: "Leases, invoices, arrears and repairs — one ledger per building, always current.",
-    site: "https://tenure.astralyngroup.com",
+    site: "https://nyumbisha.astralyngroup.com",
+    image: "/products/nyumbisha.webp",
   },
   {
     index: "03",

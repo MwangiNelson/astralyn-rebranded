@@ -18,11 +18,14 @@ export default function Plate({
   className = "",
   label,
   readout,
+  image,
   children,
 }: {
   variant: FieldVariant;
   seed?: number;
   className?: string;
+  /** A real screenshot. Replaces the Field once a product has something to show. */
+  image?: string;
   /** Small mono caption, bottom-left. */
   label?: string;
   /** Right-aligned technical readout, e.g. a chapter index. */
@@ -31,7 +34,17 @@ export default function Plate({
 }) {
   return (
     <CardLit className={`img-frame img-frame--plate group ${className}`}>
-      <Field variant={variant} seed={seed} />
+      {image ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={image}
+          alt=""
+          loading="lazy"
+          className="plate-shot absolute inset-0 object-top"
+        />
+      ) : (
+        <Field variant={variant} seed={seed} />
+      )}
 
       <span className="plate-tick top-2.5 left-2.5 border-t border-l" />
       <span className="plate-tick top-2.5 right-2.5 border-t border-r" />

@@ -681,6 +681,12 @@ body {
     radial-gradient(135% 115% at 50% 50%, transparent 58%, rgba(0, 0, 0, 0.26) 100%);
 }
 
+/* A product's own site, screenshotted. Shown in its own colours, unlike the
+   graded photos above. */
+.img-frame .plate-shot {
+  filter: none;
+}
+
 /* Corner ticks — the frame reads as an instrument, not a container. Rendered
    as markup by <Plate>, because `.card-lit::before` already owns the cursor
    light on these same elements. */

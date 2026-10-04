@@ -62,7 +62,7 @@ const CHAPTERS: {
     n: "05",
     title: "Products",
     line: "Ideas become industry. Power radiates outward into markets.",
-    tags: ["Relay", "Tenure", "Ledger"],
+    tags: ["Relay", "Nyumbisha", "Ledger"],
     field: "radiate",
     readout: "Emission / outward",
   },
@@ -102,7 +102,6 @@ const STATS = [
 /** The plate each product draws on the landing strip. */
 const PRODUCT_FIELD: Record<string, FieldVariant> = {
   Relay: "flow",
-  Tenure: "frame",
   Ledger: "vector",
   Concierge: "network",
   Roster: "radiate",
@@ -427,6 +426,7 @@ export default function Home() {
                       <Plate
                         variant={PRODUCT_FIELD[p.name] ?? "network"}
                         seed={71 + i * 17}
+                        image={p.image}
                         className="aspect-[16/9] w-full border-0 md:aspect-auto md:h-full"
                       />
                     </MaskWipe>
