@@ -27,9 +27,10 @@ export type Product = {
   audience: string;
   /** Capabilities, not features — four is the limit. */
   pillars: string[];
-  stack: string;
+  /** Absent once the product has its own site to explain itself. */
+  stack?: string;
   /** Which Core services it consumes. Proves the platform is real. */
-  core: string[];
+  core?: string[];
   /** Landing-page one-liner. */
   line: string;
   /** The product's own site, once it has one. Present means this page stops
@@ -66,11 +67,11 @@ export const PRODUCTS: Product[] = [
     name: "Nyumbisha",
     category: "Rental & Property Operations",
     status: "In Build",
-    headline: ["Rent is a schedule.", "Chasing it should not be a job."],
+    headline: ["Rent and receipts,", "handled on WhatsApp."],
     problem:
-      "A landlord with thirty units runs them on a spreadsheet, a phone and memory. Rent arrives across four channels and reconciles against none of them. Arrears are discovered late, deposits are disputed from recollection, and maintenance lives in a WhatsApp thread nobody owns.",
+      "Tenants already message their landlord on WhatsApp and already pay by M-Pesa. Neither one keeps the books. Rent arrives in bits, from phone numbers that do not say which unit they pay for. Reminders go out by hand, and finding out who still owes means checking M-Pesa messages against a notebook.",
     solution:
-      "Nyumbisha holds the lease as the source of truth. Invoices raise themselves on schedule, payments match themselves against the tenant who sent them, arrears escalate on their own, and every deposit, notice and repair is filed against the unit it belongs to. The statement is always current.",
+      "Nyumbisha runs rent in the chat tenants already use. Bills and reminders go out on WhatsApp, with SMS as backup. The tenant pays from an M-Pesa prompt on their own phone, and the money lands in the landlord's M-Pesa or bank without passing through us. Every payment is matched to its tenant and unit, part payments included, and the receipt goes back on WhatsApp. Tenants install nothing.",
     audience: "Landlords, managing agents and property firms",
     pillars: [
       "Leases, units & tenants",
@@ -78,9 +79,7 @@ export const PRODUCTS: Product[] = [
       "Payment reconciliation",
       "Maintenance & deposits",
     ],
-    stack: "Next.js · Postgres · Row-level tenancy · Event sourcing",
-    core: ["Aegis", "Rail", "Signal", "Vault", "Meter"],
-    line: "Leases, invoices, arrears and repairs — one ledger per building, always current.",
+    line: "Bill tenants, collect by M-Pesa and match every payment, in the chat they already use.",
     site: "https://nyumbisha.astralyngroup.com",
     image: "/products/nyumbisha.webp",
   },
