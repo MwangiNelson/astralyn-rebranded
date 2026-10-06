@@ -3,13 +3,15 @@
 import nodemailer from "nodemailer";
 
 /* ------------------------------------------------------------
-   The intake lands in Nelson's inbox, sent from his own Zoho
+   The intake lands in Nelson's inbox, sent from that same Zoho
    mailbox so SPF and DKIM for astralyngroup.com line up and it
    does not read as spam. The visitor is the Reply-To, so
    answering the email answers them.
 
    Needs SMTP_USER and SMTP_PASS in the environment. SMTP_HOST
-   defaults to Zoho's host for domain mailboxes.
+   defaults to smtp.zoho.com, Zoho's host for free accounts;
+   smtppro.zoho.com answers "554 Access Restricted" to those.
+   Set SMTP_HOST=smtppro.zoho.com once the mailbox is on a paid plan.
 ------------------------------------------------------------ */
 
 const TO = "nelson@astralyngroup.com";
@@ -51,7 +53,7 @@ export async function sendSignal(input: Signal): Promise<{ ok: boolean }> {
   }
 
   const transport = nodemailer.createTransport({
-    host: process.env.SMTP_HOST || "smtppro.zoho.com",
+    host: process.env.SMTP_HOST || "smtp.zoho.com",
     port: Number(process.env.SMTP_PORT || 465),
     secure: Number(process.env.SMTP_PORT || 465) === 465,
     auth: { user: SMTP_USER, pass: SMTP_PASS },
