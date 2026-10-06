@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { RevealWords } from "@/components/motion/Reveal";
+import { sendSignal } from "./send";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -62,6 +63,11 @@ const STEP_LABELS = [
 
 const TOTAL = 4;
 
+const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const titleOf = (list: { id: string; title: string }[], id: string | null) =>
+  list.find((x) => x.id === id)?.title ?? "";
+
 /* Selectable panel — dark, hairline, illuminates when chosen. */
 function Choice({
   title,
@@ -113,6 +119,8 @@ const FIELD =
 export default function StartPage() {
   const [step, setStep] = useState(0);
   const [done, setDone] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [failed, setFailed] = useState(false);
 
   const [kind, setKind] = useState<string | null>(null);
   const [forces, setForces] = useState<string[]>([]);
@@ -128,12 +136,25 @@ export default function StartPage() {
     (step === 0 && kind !== null) ||
     (step === 1 && forces.length > 0) ||
     (step === 2 && scale !== null) ||
-    (step === 3 && name.trim() !== "" && email.includes("@"));
+    (step === 3 && name.trim() !== "" && EMAIL.test(email.trim()));
 
-  const advance = () => {
-    if (!canContinue) return;
-    if (step < TOTAL - 1) setStep(step + 1);
-    else setDone(true);
+  const advance = async () => {
+    if (!canContinue || sending) return;
+    if (step < TOTAL - 1) return setStep(step + 1);
+
+    setSending(true);
+    setFailed(false);
+    const { ok } = await sendSignal({
+      kind: titleOf(KINDS, kind),
+      forces: forces.map((f) => titleOf(FORCES, f)),
+      scale: titleOf(SCALES, scale),
+      name,
+      email,
+      vision,
+    }).catch(() => ({ ok: false }));
+    setSending(false);
+    if (ok) setDone(true);
+    else setFailed(true);
   };
 
   const progress = done ? 1 : (step + 1) / TOTAL;
@@ -328,14 +349,27 @@ export default function StartPage() {
           <button
             type="button"
             onClick={advance}
-            disabled={!canContinue}
+            disabled={!canContinue || sending}
             className={`btn-core ${step === TOTAL - 1 ? "btn-solid" : ""} ${
-              canContinue ? "" : "pointer-events-none opacity-30"
+              canContinue && !sending ? "" : "pointer-events-none opacity-30"
             }`}
           >
-            {step === TOTAL - 1 ? "Send the signal" : "Continue"}
+            {step < TOTAL - 1 ? "Continue" : sending ? "Sending" : "Send the signal"}
           </button>
         </div>
+      )}
+
+      {failed && !done && (
+        <p role="alert" className="mt-8 text-sm leading-relaxed text-silver">
+          That did not go through. Write to{" "}
+          <a
+            href="mailto:nelson@astralyngroup.com"
+            className="text-white underline underline-offset-4"
+          >
+            nelson@astralyngroup.com
+          </a>{" "}
+          and it reaches the same inbox.
+        </p>
       )}
     </section>
   );

@@ -36,10 +36,10 @@ export default function ContactPage() {
           className="mt-20"
         >
           <a
-            href="mailto:hello@astralyn.group"
+            href="mailto:nelson@astralyngroup.com"
             className="display inline-block text-[clamp(1.4rem,3.5vw,3rem)] text-chrome underline-offset-[12px] transition-all duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] hover:text-white hover:underline hover:[text-shadow:0_0_40px_rgba(245,246,247,0.35)]"
           >
-            hello@astralyn.group
+            nelson@astralyngroup.com
           </a>
         </motion.div>
       </div>
