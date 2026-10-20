@@ -33,7 +33,7 @@ const THREADS: Thread[] = [
     status: "ACTIVE",
     inquiry: "What happens when the enterprise can reason about itself?",
     brief:
-      "Inference systems embedded inside operations — not chat, cognition. We engineer models that read a business as a single system and act with judgment. Findings feed directly into Concierge and the Core intelligence layer.",
+      "Inference systems embedded inside operations: not chat, but cognition. We engineer models that read a business as a single system and act with judgment. Findings feed directly into Concierge and the Core intelligence layer.",
     fields: ["Inference orchestration", "Private deployment", "Decision systems"],
   },
   {
@@ -43,7 +43,7 @@ const THREADS: Thread[] = [
     status: "PROTOTYPE",
     inquiry: "How far can software go before it needs permission?",
     brief:
-      "Agents that plan, execute and verify without a human in the loop — and the control surfaces that keep them accountable. Current prototype: a self-healing operations mesh running in closed trials.",
+      "Agents that plan, execute and verify without a human in the loop, and the control surfaces that keep them accountable. Current prototype: a self-healing operations mesh running in closed trials.",
     fields: ["Multi-agent control", "Verification layers", "Failure containment"],
   },
   {
@@ -63,7 +63,7 @@ const THREADS: Thread[] = [
     status: "ACTIVE",
     inquiry: "Can a design system design itself?",
     brief:
-      "Generative systems that hold a brand's discipline — typography, rhythm, restraint — and compose within it. Machines that produce a thousand layouts, all unmistakably one identity.",
+      "Generative systems that hold a brand's discipline (typography, rhythm, restraint) and compose within it. Machines that produce a thousand layouts, all unmistakably one identity.",
     fields: ["Generative systems", "Constraint engines", "Identity encoding"],
   },
   {
@@ -73,7 +73,7 @@ const THREADS: Thread[] = [
     status: "EXPLORATION",
     inquiry: "What does a factory see when it looks at itself?",
     brief:
-      "Vision and sensing pipelines for physical operations — ports, plants, grids. Teaching infrastructure to observe its own condition and report before failure, not after.",
+      "Vision and sensing pipelines for physical operations: ports, plants, grids. Teaching infrastructure to observe its own condition and report before failure, not after.",
     fields: ["Industrial vision", "Sensor fusion", "Predictive condition"],
   },
 ];
@@ -156,7 +156,7 @@ export default function LabPage() {
           >
             <p className="label">Astralyn Research Division</p>
             <p className="font-mono text-[0.6rem] tracking-[0.28em] text-steel uppercase">
-              Index — 05 threads — Revised 2026.07
+              Index · 05 threads · Revised 2026.07
             </p>
           </motion.div>
           <h1 className="display max-w-6xl text-[clamp(2.8rem,8vw,7.5rem)] uppercase">
@@ -182,7 +182,7 @@ export default function LabPage() {
           <div className="flex items-baseline justify-between pb-6">
             <p className="label">Research Index</p>
             <p className="hidden font-mono text-[0.6rem] tracking-[0.28em] text-steel uppercase md:block">
-              Status — Active / Prototype / Exploration
+              Status: Active / Prototype / Exploration
             </p>
           </div>
         </Reveal>

@@ -45,7 +45,7 @@ const satoshi = localFont({
    `npx sv add @fontsource/ibm-plex-mono` or drop the woff2 into ./fonts and
    switch it to localFont. It is the last external font dependency. */
 
-const TITLE = "Astralyn Group — Technology House, Nairobi";
+const TITLE = "Astralyn Group | Technology House, Nairobi";
 const DESCRIPTION =
   "Astralyn Group is a Nairobi technology house building enterprise software, AI systems, and operations platforms for businesses across East Africa. Strategy, design, and engineering under one roof.";
 
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: TITLE,
-    template: "%s — Astralyn Group",
+    template: "%s | Astralyn Group",
   },
   description: DESCRIPTION,
   applicationName: "Astralyn Group",

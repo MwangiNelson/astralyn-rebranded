@@ -29,7 +29,7 @@ const DISCRETION = [
   },
   {
     t: "The depth is on request.",
-    d: "Under an NDA, in a room, we will walk you through any engagement end to end — the decisions, the trade-offs and what we would do differently.",
+    d: "Under an NDA, in a room, we will walk you through any engagement end to end: the decisions, the trade-offs and what we would do differently.",
   },
 ];
 
@@ -48,7 +48,7 @@ export default function WorkPage() {
             transition={{ delay: 0.6, duration: 1.4, ease: EASE }}
             className="label mb-10"
           >
-            Selected Work — The wall, not the file
+            Selected Work · The wall, not the file
           </motion.p>
           <h1 className="display max-w-6xl text-[clamp(2.8rem,8vw,7.5rem)] uppercase">
             <RevealWords text="The names" delay={0.2} />

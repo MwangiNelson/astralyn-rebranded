@@ -67,7 +67,7 @@ export const PRODUCTS: Product[] = [
     problem:
       "A fleet owner learns what a vehicle made when the day is already over, from a notebook, a phone call, or nothing at all. Insurance lapses, inspections expire, and the first anyone knows is a roadblock and an impounded vehicle.",
     solution:
-      "Relay records the day as it happens — driver, vehicle, route, collection, expense — and closes each vehicle's books nightly. Every compliance date the vehicle carries is tracked to the day it expires, and warns long before it does. The owner opens one screen and knows.",
+      "Relay records the day as it happens (driver, vehicle, route, collection, expense) and closes each vehicle's books nightly. Every compliance date the vehicle carries is tracked to the day it expires, and warns long before it does. The owner opens one screen and knows.",
     audience: "SACCOs, owner-operators and logistics fleets",
     pillars: [
       "Daily collections & deficits",
@@ -75,7 +75,7 @@ export const PRODUCTS: Product[] = [
       "Compliance expiry calendar",
       "Owner reporting",
     ],
-    line: "The day's takings, the vehicle's papers, and the driver behind both — closed nightly.",
+    line: "The day's takings, the vehicle's papers, and the driver behind both. Closed nightly.",
   },
   {
     index: "03",
@@ -103,9 +103,9 @@ export const PRODUCTS: Product[] = [
     status: "Concept",
     headline: ["Your customers already", "opened WhatsApp."],
     problem:
-      "Customers ask the same eleven questions — balance, booking, hours, status, receipt — and a person answers each one by hand, badly, between other work. Nobody installs an app to ask a question they could have sent as a message.",
+      "Customers ask the same eleven questions (balance, booking, hours, status, receipt), and a person answers each one by hand, badly, between other work. Nobody installs an app to ask a question they could have sent as a message.",
     solution:
-      "Concierge answers on the channel the customer already uses. It is wired into the business's own data through Core, so it answers with facts rather than pleasantries, completes the transaction where it can, and hands to a human the moment it should — with the whole thread attached.",
+      "Concierge answers on the channel the customer already uses. It is wired into the business's own data through Core, so it answers with facts rather than pleasantries, completes the transaction where it can, and hands to a human the moment it should, with the whole thread attached.",
     audience: "Any business whose customers message rather than call",
     pillars: [
       "WhatsApp-first",
@@ -124,7 +124,7 @@ export const PRODUCTS: Product[] = [
     problem:
       "Shifts are planned on paper, attendance is taken on trust, and the argument at the end of the month is about hours nobody recorded. Supervisors spend their day on the phone finding out where people are.",
     solution:
-      "Roster plans the shift, verifies the clock-in against the place it was meant to happen, dispatches the day's tasks to the phone in the worker's hand, and produces the timesheet that payroll actually needs — without anyone retyping it.",
+      "Roster plans the shift, verifies the clock-in against the place it was meant to happen, dispatches the day's tasks to the phone in the worker's hand, and produces the timesheet that payroll actually needs, without anyone retyping it.",
     audience: "Operators running crews across sites",
     pillars: [
       "Shift planning",
@@ -170,7 +170,7 @@ export const CORE_SERVICES: {
     name: "Vault",
     role: "Documents",
     detail:
-      "Storage, generation and signature for leases, logbooks, statements and notices — with the retention rules attached to the document, not the app.",
+      "Storage, generation and signature for leases, logbooks, statements and notices. The retention rules travel with the document, not the app.",
   },
   {
     name: "Trace",

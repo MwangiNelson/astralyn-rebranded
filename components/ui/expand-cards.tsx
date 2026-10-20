@@ -179,7 +179,7 @@ export default function ExpandCards({
                     className="min-w-0"
                   >
                     <p className="label mb-3" style={{ color: f.accent }}>
-                      Signal — {f.signal}
+                      Signal · {f.signal}
                     </p>
                     <h3 className="display text-2xl whitespace-nowrap md:text-4xl">
                       {f.name}

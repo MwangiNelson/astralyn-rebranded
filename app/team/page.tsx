@@ -258,7 +258,7 @@ function FounderDossier({
               className="label mb-6"
               style={{ color: founder.accent }}
             >
-              Subject — Founder {founder.n}
+              Subject · Founder {founder.n}
             </motion.p>
 
             <h1 className="display-black headline-lit text-[clamp(2.6rem,7vw,6.5rem)] leading-[0.9] uppercase">
@@ -508,7 +508,7 @@ export default function TeamPage() {
           </h1>
           <Reveal delay={0.7} className="mt-12 max-w-md">
             <p className="text-base leading-relaxed text-silver">
-              Four founders, presented as dossiers rather than profiles — and
+              Four founders, presented as dossiers rather than profiles, and
               behind them the people who do the work. Approach a founder and the
               band opens; activate it and the file fills the screen.
             </p>
@@ -523,7 +523,7 @@ export default function TeamPage() {
       {/* ---------------- THE FOUNDERS ---------------- */}
       <section className="mx-auto max-w-[1600px] px-6 py-20 md:px-12 md:py-28">
         <Reveal>
-          <p className="label mb-10">The Founders — 04</p>
+          <p className="label mb-10">The Founders · 04</p>
         </Reveal>
         <Reveal delay={0.1}>
           <ExpandCards founders={FOUNDERS} onOpen={setActive} />

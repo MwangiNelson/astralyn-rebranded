@@ -255,7 +255,7 @@ export const FOUNDERS: Founder[] = [
     photo: "/team/angelo.jpg",
     origin: "Nairobi, KE",
     philosophy:
-      "Design is the moment technology becomes human — and stays that way.",
+      "Design is the moment technology becomes human, and stays that way.",
     focus: ["Design", "Brand", "Interaction", "Design Systems"],
     technologies: ["Product Design", "Motion", "Design Tokens", "Type", "Brand"],
     timeline: SHARED_TIMELINE,

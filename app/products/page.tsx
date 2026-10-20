@@ -181,7 +181,7 @@ export default function ProductsPage() {
             transition={{ delay: 0.6, duration: 1.4, ease: EASE }}
             className="label mb-10"
           >
-            Products — Five products. One platform.
+            Products · Five products. One platform.
           </motion.p>
           <h1 className="display max-w-6xl text-[clamp(3.2rem,9vw,8.5rem)] text-white uppercase">
             <RevealWords text="Ideas become" delay={0.2} />
@@ -194,7 +194,7 @@ export default function ProductsPage() {
             transition={{ delay: 1.4, duration: 1.6, ease: EASE }}
             className="mt-12 max-w-xl text-lg leading-relaxed text-chrome"
           >
-            We build for operators who run physical things — vehicles,
+            We build for operators who run physical things: vehicles,
             buildings, money, crews. Five products, each engineered end to end,
             all standing on infrastructure we own.
           </motion.p>
@@ -242,7 +242,7 @@ export default function ProductsPage() {
               Every product above needs identity, payments, messaging, billing,
               documents and an audit trail. We built those six once. A new
               product starts at its own first feature instead of at a login
-              screen — which is why a suite this wide is possible at our size.
+              screen. That is why a suite this wide is possible at our size.
             </p>
           </Reveal>
 

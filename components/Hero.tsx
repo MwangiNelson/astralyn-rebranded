@@ -137,7 +137,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.9, ease: EASE }}
           className="font-mono text-[0.6rem] tracking-[0.28em] text-silver uppercase tabular-nums"
         >
-          Nairobi — {clock || "--:--:--"} EAT
+          Nairobi · {clock || "--:--:--"} EAT
         </motion.p>
       </div>
 

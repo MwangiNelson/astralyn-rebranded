@@ -217,7 +217,7 @@ export default function Home() {
               },
               {
                 t: "A technology house.",
-                d: "Strategy, design, and engineering under one roof — one standard, one signature.",
+                d: "Strategy, design, and engineering under one roof. One standard, one signature.",
               },
             ].map((b, i) => (
               <Reveal key={b.t} delay={0.1 + i * 0.1}>
@@ -408,7 +408,7 @@ export default function Home() {
               <span className="text-chrome-sheen">We build companies.</span>
             </h2>
             <p className="mb-16 max-w-2xl text-base leading-relaxed text-silver">
-              Five products for operators who run physical things — vehicles,
+              Five products for operators who run physical things: vehicles,
               buildings, money, crews. All of them stand on one platform we
               own, which is why a suite this wide is possible at our size.
             </p>
@@ -456,7 +456,7 @@ export default function Home() {
           <Reveal delay={0.15} className="mt-14">
             <div className="chrome-rule mb-8" />
             <p className="max-w-2xl font-mono text-[0.68rem] leading-relaxed tracking-[0.16em] text-steel uppercase">
-              All five run on Astralyn Core — identity, payments, messaging,
+              All five run on Astralyn Core: identity, payments, messaging,
               billing, documents, audit. Built once.
             </p>
           </Reveal>
@@ -482,7 +482,7 @@ export default function Home() {
               <Reveal delay={0.15}>
                 <p className="mt-8 max-w-md text-base leading-relaxed text-silver">
                   Strategy fused with engineering. Design fused with technology.
-                  The people who power Astralyn — presented the way they build:
+                  The people who power Astralyn, presented the way they build:
                   as worlds, not profiles.
                 </p>
               </Reveal>
