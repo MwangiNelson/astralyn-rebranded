@@ -29,7 +29,7 @@ const CHAPTERS: {
   {
     n: "01",
     title: "Potential",
-    line: "Every idea begins dormant. Silent. Full of stored energy, waiting for direction.",
+    line: "Every business starts with an idea that hasn't moved yet. We find the direction.",
     tags: ["Discovery", "Research", "Opportunity Mapping"],
     field: "dormant",
     readout: "Charge / dormant lattice",
@@ -45,7 +45,7 @@ const CHAPTERS: {
   {
     n: "03",
     title: "Design",
-    line: "We make power human. Clarity engineered into form, interaction, and identity.",
+    line: "Your customers and your staff get something they understand, trust and want to use.",
     tags: ["Product Design", "Brand Identity", "Interaction Systems"],
     field: "frame",
     readout: "Subdivision / orthogonal",
@@ -53,7 +53,7 @@ const CHAPTERS: {
   {
     n: "04",
     title: "Technology",
-    line: "We build the systems. Energy flows through architecture, code, and infrastructure.",
+    line: "Your operations move onto architecture, code and infrastructure built to hold weight.",
     tags: ["Software Engineering", "AI Systems", "Enterprise Platforms"],
     field: "network",
     readout: "Signal graph / live",
@@ -61,7 +61,7 @@ const CHAPTERS: {
   {
     n: "05",
     title: "Products",
-    line: "Ideas become industry. Power radiates outward into markets.",
+    line: "Your idea becomes something the market uses every day.",
     tags: ["Nyumbisha", "Relay", "Ledger"],
     field: "radiate",
     readout: "Emission / outward",
@@ -70,7 +70,7 @@ const CHAPTERS: {
     n: "06",
     title: "Impact",
     line: "Systems that outlive the engagement. Momentum that compounds year after year.",
-    tags: ["Five-Year Partnerships", "Managed Deployments", "Owned Infrastructure"],
+    tags: ["Multi-Year Partnerships", "Managed Deployments", "Owned Infrastructure"],
     field: "compound",
     readout: "Compounding curve",
   },
@@ -82,9 +82,8 @@ const DISCIPLINES = [
   "Brand Strategy",
   "Software Engineering",
   "Artificial Intelligence",
+  "Cybersecurity Solutions",
   "Enterprise Systems",
-  "Research",
-  "Innovation",
   "Digital Transformation",
 ];
 
@@ -93,9 +92,10 @@ const DISCIPLINES = [
    an invented number is the one thing on a page like this that can cost a
    deal, so these are the four we can stand behind. */
 const STATS = [
-  { v: "4", l: "Founders. One standard, one signature." },
+  { v: "4", l: "Founders. Strategy, design and engineering" },
   { v: "7", l: "Platforms live and open to inspection" },
-  { v: "2020", l: "Longest partnership — still deployed by us" },
+  // A duration, not a year: a bare "2020" read as a founding date beside "Est. 2023".
+  { v: `${new Date().getFullYear() - 2020} yrs`, l: "Longest partnership, still deployed by us" },
   { v: "5", l: "Products on one platform we own" },
 ];
 
@@ -115,20 +115,20 @@ const CAPABILITIES: {
 }[] = [
   {
     t: "Strategy",
-    d: "We define the opportunity before a line is drawn or written.",
+    d: "We work out what the business needs, which technology fits, and the plan to get there before any code is written.",
     items: ["Technology Strategy", "Brand Strategy", "Research", "Transformation"],
     field: "vector",
   },
   {
     t: "Design",
-    d: "We give power a human form. Editorial. Precise. Felt.",
+    d: "We turn complex processes into products people understand, trust and want to use. Editorial. Precise. Felt.",
     items: ["Product Design", "Brand Identity", "Interaction", "Design Systems"],
     field: "frame",
   },
   {
     t: "Technology",
-    d: "We engineer systems that turn direction into momentum.",
-    items: ["Software Engineering", "AI Systems", "Enterprise Platforms", "Infrastructure"],
+    d: "We engineer the software and systems that make the business run, keep them running at scale, and defend them once they're live.",
+    items: ["Software Engineering", "AI Systems", "Enterprise Platforms", "Infrastructure", "Cybersecurity"],
     field: "radiate",
   },
 ];
@@ -209,7 +209,7 @@ export default function Home() {
             {[
               {
                 t: "Not a software company.",
-                d: "Software is an output. We build the systems, direction, and momentum behind it.",
+                d: "Software is the output. We build the business behind it.",
               },
               {
                 t: "Not an agency.",
@@ -318,7 +318,7 @@ export default function Home() {
           <Reveal>
             <p className="label">Capabilities</p>
             <h2 className="display headline-lit mt-6 mb-20 text-[clamp(2.2rem,5vw,4rem)]">
-              Three forces. One signature.
+              Three disciplines, all in-house.
             </h2>
           </Reveal>
           <div className="grid gap-6 md:grid-cols-3">
@@ -476,7 +476,7 @@ export default function Home() {
                 <h2 className="display headline-lit mt-6 max-w-2xl text-[clamp(2.4rem,6vw,5rem)]">
                   Four minds.
                   <br />
-                  <span className="text-chrome-sheen">One force.</span>
+                  <span className="text-chrome-sheen">One house.</span>
                 </h2>
               </Reveal>
               <Reveal delay={0.15}>

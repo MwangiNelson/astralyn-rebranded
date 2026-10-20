@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Astralyn Group",
     short_name: "Astralyn",
     description:
-      "Astralyn Group is a technology house. We architect businesses, engineer products and shape the future — through strategy, design and technology.",
+      "Astralyn Group is a Nairobi technology house building enterprise software, AI systems, and operations platforms for businesses across East Africa.",
     start_url: "/",
     display: "standalone",
     background_color: "#080808",

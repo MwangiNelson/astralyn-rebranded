@@ -218,10 +218,6 @@ export default function LabPage() {
               thread has a path to product. We explore so that when a partner
               asks for the future, we have already built the first version.
             </p>
-            <div className="mt-12 space-y-4 font-mono text-[0.65rem] tracking-[0.25em] text-steel uppercase">
-              <p>We engineer. We architect. We shape.</p>
-              <p>We transform. We power.</p>
-            </div>
           </Reveal>
         </div>
       </section>

@@ -194,9 +194,9 @@ export type Founder = {
 
 const SHARED_TIMELINE = [
   { year: "2023", event: "Astralyn founded. Strategy, design and engineering, fused." },
-  { year: "2024", event: "First platforms shipped. One standard, one signature." },
+  { year: "2024", event: "First platforms shipped." },
   { year: "2025", event: "The house expands across markets and disciplines." },
-  { year: "2026", event: "Powering the next generation of business." },
+  { year: "2026", event: "Five products, one platform of our own." },
 ];
 
 /* NOTE (Nelson): titles are neutral "Co-Founder & Partner" placeholders and the

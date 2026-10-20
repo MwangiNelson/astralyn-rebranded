@@ -10,8 +10,8 @@ export default function Footer() {
           <div>
             <Logo markClass="h-7 w-auto" wordClass="text-lg tracking-[0.2em]" />
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-silver">
-              A technology house. We architect businesses. We engineer
-              products. We shape the future.
+              A technology house in Nairobi. Strategy, design and engineering for
+              businesses across East Africa.
             </p>
           </div>
 
