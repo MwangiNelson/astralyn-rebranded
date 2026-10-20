@@ -8,7 +8,7 @@ import MetallicPaint from "@/components/MetallicPaint";
 import EnergyWord from "@/components/EnergyWord";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
-const LINES = ["Power the", "next generation", "of business"];
+const LINES = ["We build the", "systems your", "business runs on."];
 
 export default function Hero() {
   const [go, setGo] = useState(false);
@@ -137,7 +137,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.9, ease: EASE }}
           className="font-mono text-[0.6rem] tracking-[0.28em] text-silver uppercase tabular-nums"
         >
-          Nairobi — {clock || "--:--:--"} EAT
+          Nairobi · {clock || "--:--:--"} EAT
         </motion.p>
       </div>
 
@@ -180,7 +180,8 @@ export default function Hero() {
                   <>
                     {/* The one place on the site with real colour: fire →
                         plasma → lightning, masked to the letterforms. */}
-                    <EnergyWord>Power</EnergyWord>
+                    {"We "}
+                    <EnergyWord>build</EnergyWord>
                     {" the"}
                   </>
                 ) : i === 1 ? (
@@ -200,8 +201,8 @@ export default function Hero() {
           className="mt-8 flex max-w-2xl flex-col gap-7"
         >
           <p className="max-w-xl text-base leading-relaxed text-chrome md:text-lg">
-            A technology house. We architect businesses, engineer products, and
-            shape the future — through strategy, design, and technology.
+            A technology house in Nairobi. Strategy, design and engineering for
+            businesses across East Africa, and five products of our own.
           </p>
           <div className="flex flex-wrap items-center gap-5">
             <Link href={CTA.href} className="btn-core btn-solid">
