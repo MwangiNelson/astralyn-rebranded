@@ -3,12 +3,11 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { CTA } from "@/lib/site";
 import MetallicPaint from "@/components/MetallicPaint";
-import EnergyWord from "@/components/EnergyWord";
+import BuildWord from "@/components/BuildWord";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
-const LINES = ["We build the", "systems your", "business runs on."];
+const LINES = ["We build the", "systems behind", "your business."];
 
 export default function Hero() {
   const [go, setGo] = useState(false);
@@ -178,10 +177,12 @@ export default function Hero() {
                     words disappear entirely. */}
                 {i === 0 ? (
                   <>
-                    {/* The one place on the site with real colour: fire →
-                        plasma → lightning, masked to the letterforms. */}
+                    {/* The one place on the site with colour: the word is
+                        laid brick by brick, each landing hot and cooling. */}
                     {"We "}
-                    <EnergyWord>build</EnergyWord>
+                    <BuildWord start={go} delay={0.55}>
+                      build
+                    </BuildWord>
                     {" the"}
                   </>
                 ) : i === 1 ? (
@@ -201,15 +202,15 @@ export default function Hero() {
           className="mt-8 flex max-w-2xl flex-col gap-7"
         >
           <p className="max-w-xl text-base leading-relaxed text-chrome md:text-lg">
-            A technology house in Nairobi. Strategy, design and engineering for
-            businesses across East Africa, and five products of our own.
+            Strategy, design and engineering for the platforms, products and
+            internal systems businesses depend on.
           </p>
           <div className="flex flex-wrap items-center gap-5">
-            <Link href={CTA.href} className="btn-core btn-solid">
-              Start Something
+            <Link href="#approach" className="btn-core btn-solid">
+              Our approach
             </Link>
-            <Link href="/work" className="btn-core">
-              Selected Work
+            <Link href="#core" className="btn-core">
+              Astralyn Core
             </Link>
           </div>
         </motion.div>

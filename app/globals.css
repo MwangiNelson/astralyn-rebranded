@@ -104,6 +104,17 @@ body {
   text-wrap: balance;
 }
 
+/* Mid-size headings. The display settings above are tuned for type set huge;
+   at 2rem the same tracking and leading run words together. */
+.display-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  word-spacing: 0.06em;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
 /* Maximum weight — the hero words. Satoshi Black, tighter than tight. */
 .display-black {
   font-family: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
@@ -180,37 +191,62 @@ body {
    untouched and reveals the energy only through the letterforms.
    This is the one place on the site that is allowed real colour.
 ------------------------------------------------------------ */
-.energy-word {
+/* Homepage sections as stacked cards on phones (see StackCard). Opaque so the
+   card underneath is covered, with a lifted shadow so the edge reads. */
+@media (max-width: 767px) and (prefers-reduced-motion: no-preference) {
+  .stack-card {
+    position: sticky;
+    top: var(--pin, 0px);
+    min-height: 100svh;
+    background: var(--color-midnight);
+    box-shadow: 0 -18px 40px -12px rgba(0, 0, 0, 0.7);
+  }
+}
+
+.build-word {
   position: relative;
   display: inline-block;
 }
 
-.energy-word .energy-word-text {
+.build-word .build-word-text {
   display: block;
   color: #fff;
-  /* Black plate behind the glyphs: the canvas' darken blend resolves inside
-     the line's stacking context, so the backdrop must be black (not the page)
-     for the energy to clip to the letterforms. Invisible over the #080808 hero. */
-  background: #000;
+  /* A plate behind the glyphs: the darken blend resolves inside the line's
+     stacking context, so it needs a backdrop no brighter than anything the
+     canvas draws. The page colour qualifies, because the canvas never goes
+     below it, and unlike pure black it leaves no box around the word. */
+  background: var(--color-midnight);
   text-shadow: none;
 }
 
-.energy-word canvas {
+.build-word-probe {
+  display: inline-block;
+  width: 0;
+  height: 0;
+}
+
+.build-word-fill,
+.build-word-rig {
   position: absolute;
-  inset: 0;
-  width: 100%;
+  top: 0;
   height: 100%;
-  mix-blend-mode: darken;
   pointer-events: none;
 }
 
-/* No WebGL / reduced motion — a still of the same energy, clipped to the type. */
-.energy-word-fallback {
-  background: linear-gradient(115deg, #ff7a00 0%, #ff3d2e 30%, #d84bff 62%, #5aa7ff 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
+.build-word-fill {
+  left: 0;
+  width: 100%;
+  mix-blend-mode: darken;
+}
+
+.build-word-outline {
+  position: absolute;
+  inset: 0;
   color: transparent;
+  -webkit-text-stroke: 1px var(--color-chrome);
   text-shadow: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* ------------------------------------------------------------
