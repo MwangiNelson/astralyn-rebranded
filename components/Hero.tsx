@@ -43,8 +43,10 @@ export default function Hero() {
     return () => window.clearInterval(id);
   }, []);
 
+  // Phones get top and bottom padding: the headline wraps to five lines
+  // there, and centred without it the block rode up into the HUD.
   return (
-    <section className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden bg-midnight">
+    <section className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden bg-midnight pt-36 pb-32 md:py-0">
       {/* The metallic object. The brief opens on this, not on a headline over
           texture — the site's first move is a piece of liquid chrome turning
           in the dark. Everything else in the hero is type. */}
@@ -146,7 +148,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: go ? 1 : 0 }}
           transition={{ duration: 0.7, delay: 0.15, ease: EASE }}
-          className="mb-7 flex items-center gap-3"
+          className="mb-7 hidden items-center gap-3 md:flex"
         >
           <motion.span
             className="h-px bg-chrome/60"

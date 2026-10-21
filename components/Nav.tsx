@@ -18,7 +18,7 @@ const PREVIEW: Record<string, FieldVariant> = {
   "/capabilities": "vector",
   "/products": "radiate",
   "/work": "compound",
-  "/lab": "scan",
+  "/security": "scan",
   "/team": "network",
   "/contact": "radiate",
 };
