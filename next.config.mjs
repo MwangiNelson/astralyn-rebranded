@@ -11,6 +11,8 @@ const nextConfig = {
     return [
       // /founders became /team when the page grew past the four founders.
       { source: "/founders", destination: "/team", permanent: true },
+      // The Research Lab gave way to the security page.
+      { source: "/lab", destination: "/security", permanent: true },
     ];
   },
 };
