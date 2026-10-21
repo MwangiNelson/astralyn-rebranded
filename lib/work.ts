@@ -41,6 +41,16 @@ export const CAPABILITIES: Capability[] = [
         summary:
           "The company website and truck catalogue: stock, specifications and photo galleries buyers browse before they call.",
       },
+      {
+        client: "Gamaag",
+        summary:
+          "The finance and operations system a distributor runs on: invoices, sales reps and their vans, fuel, and M-Pesa payments.",
+      },
+      {
+        client: "Gizmo",
+        summary:
+          "Our own shopping assistant, which answers buyers' questions from a product catalogue instead of making them search it.",
+      },
     ],
     next: { label: "Discuss a commerce build", href: "/start" },
   },
@@ -55,11 +65,6 @@ export const CAPABILITIES: Capability[] = [
         client: "Sustainable Kenya",
         summary:
           "A national sustainability platform for Kenyan businesses.",
-      },
-      {
-        client: "Mark Infosys",
-        summary:
-          "A platform we deployed in 2020 and still run for them today.",
       },
     ],
     next: { label: "Discuss a platform build", href: "/start" },
@@ -77,9 +82,9 @@ export const CAPABILITIES: Capability[] = [
           "Support for mothers after birth: a chat companion that responds to how the mother says she is feeling.",
       },
       {
-        client: "Gizmo",
+        client: "HERA Conceive",
         summary:
-          "Our own shopping assistant, which answers buyers' questions from a product catalogue instead of making them search it.",
+          "A fertility companion app. We designed it, and built its website and app, including an assistant users can talk to.",
       },
       {
         client: "Recette",
@@ -100,7 +105,7 @@ export const CAPABILITIES: Capability[] = [
 ];
 
 /** Work that shows our range but does not belong in a group above. */
-export const ALSO = ["Alientag VR"];
+export const ALSO = ["Mark Infosys", "Alientag VR"];
 
 /* The approach, in the order an engagement actually runs. */
 export const ENGAGEMENT = [
@@ -118,6 +123,6 @@ export const ENGAGEMENT = [
   },
   {
     t: "We stay to run it.",
-    d: "We deploy and maintain what we build. Our longest partnership began in 2020 and we still run that platform today.",
+    d: "We deploy and maintain what we build. Our longest partnership began in 2020, and we still run what we built for them.",
   },
 ];

@@ -181,12 +181,12 @@ export default function ProductsPage() {
             transition={{ delay: 0.6, duration: 1.4, ease: EASE }}
             className="label mb-10"
           >
-            Products · Five products. One platform.
+            Products
           </motion.p>
           <h1 className="display max-w-6xl text-[clamp(3.2rem,9vw,8.5rem)] text-white uppercase">
-            <RevealWords text="Ideas become" delay={0.2} />
+            <RevealWords text="Software we build" delay={0.2} />
             <br />
-            <RevealWords text="industry" delay={0.6} chrome />
+            <RevealWords text="and run ourselves" delay={0.6} chrome />
           </h1>
           <motion.p
             initial={{ opacity: 0 }}
@@ -194,9 +194,9 @@ export default function ProductsPage() {
             transition={{ delay: 1.4, duration: 1.6, ease: EASE }}
             className="mt-12 max-w-xl text-lg leading-relaxed text-chrome"
           >
-            We build for operators who run physical things: vehicles,
-            buildings, money, crews. Five products, each engineered end to end,
-            all standing on infrastructure we own.
+            Alongside client work, we build our own products for businesses
+            that run vehicles, rental property, payments and field teams. Each
+            one says plainly where it stands today.
           </motion.p>
           <motion.div
             initial={{ opacity: 0 }}
@@ -235,14 +235,15 @@ export default function ProductsPage() {
           <Reveal>
             <p className="label">Astralyn Core</p>
             <h2 className="display headline-lit mt-6 max-w-4xl text-[clamp(2.2rem,5vw,4rem)]">
-              The products are the surface.{" "}
-              <span className="text-chrome-sheen">This is the company.</span>
+              Built on{" "}
+              <span className="text-chrome-sheen">Astralyn Core.</span>
             </h2>
             <p className="mt-8 max-w-2xl text-base leading-relaxed text-silver md:text-lg">
-              Every product above needs identity, payments, messaging, billing,
-              documents and an audit trail. We built those six once. A new
-              product starts at its own first feature instead of at a login
-              screen. That is why a suite this wide is possible at our size.
+              Every product above needs the same six things underneath it:
+              sign-in, payments, messaging, billing, documents and a record of
+              who did what. Astralyn Core provides them once, so a new product
+              starts with them in place. Nyumbisha runs on Core today; Relay
+              runs on its own stack for now and will move across.
             </p>
           </Reveal>
 
@@ -272,8 +273,8 @@ export default function ProductsPage() {
 
           <Reveal delay={0.2} className="mt-14">
             <p className="max-w-2xl font-mono text-[0.68rem] leading-relaxed tracking-[0.16em] text-steel uppercase">
-              {shipping} of {PRODUCTS.length} shipping or in build · Six shared
-              services · One sign-in across the suite
+              {shipping} of {PRODUCTS.length} live or in build · Six shared
+              services
             </p>
           </Reveal>
         </div>
@@ -284,13 +285,13 @@ export default function ProductsPage() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(245,246,247,0.06),transparent_60%)]" />
         <div className="relative mx-auto max-w-[1600px] px-6 md:px-12">
           <h2 className="display text-[clamp(2.2rem,6vw,5.5rem)] uppercase">
-            <RevealWords text="Your product" />
+            <RevealWords text="Need something like" />
             <br />
-            <RevealWords text="belongs here" delay={0.3} chrome />
+            <RevealWords text="this for your business?" delay={0.3} chrome />
           </h2>
           <Reveal delay={0.5}>
             <Link href={CTA.href} className="btn-core btn-solid mt-16">
-              Start the launch
+              Start a conversation
             </Link>
           </Reveal>
           <motion.p

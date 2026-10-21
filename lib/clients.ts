@@ -14,7 +14,8 @@ export type Client = {
   sector: string;
   /** Path under /public. Omit when no usable mark exists. */
   logo?: string;
-  href: string;
+  /** Public address. Omitted for systems that run behind a client's sign-in. */
+  href?: string;
   /** Shipped year, only where we can date it honestly. */
   year?: string;
   status: "Live" | "In Build" | "Maintained";
@@ -24,6 +25,20 @@ export type Client = {
 
 export const CLIENTS: Client[] = [
   {
+    name: "Gamaag",
+    sector: "Finance & Operations",
+    year: "2025",
+    status: "Maintained",
+  },
+  {
+    name: "HERA Conceive",
+    sector: "Product Design · App",
+    logo: "/clients/hera.png",
+    href: "https://heraconceive.com/",
+    year: "2025",
+    status: "Live",
+  },
+  {
     name: "Impexicon EA",
     sector: "Commerce Platform",
     logo: "/clients/impexicon.png",
@@ -32,9 +47,8 @@ export const CLIENTS: Client[] = [
   },
   {
     name: "Mark Infosys",
-    sector: "Platform · Managed Deployment",
+    sector: "Managed Deployment",
     logo: "/clients/mark-infosys.png",
-    href: "https://www.markinfosys.com/",
     year: "2020",
     status: "Maintained",
   },
@@ -63,7 +77,7 @@ export const CLIENTS: Client[] = [
   },
   {
     name: "Gizmo",
-    sector: "Applied AI",
+    sector: "AI Shopping Assistant",
     href: "https://gizmo-delta.vercel.app/",
     year: "2025",
     status: "In Build",

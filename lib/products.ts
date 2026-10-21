@@ -64,7 +64,7 @@ export const PRODUCTS: Product[] = [
     name: "Relay",
     category: "Fleet & Transport Operations",
     status: "Live",
-    headline: ["Every shilling a vehicle earns.", "Every document that keeps it moving."],
+    headline: ["Each vehicle's takings, expenses", "and documents, in one place."],
     problem:
       "A fleet owner learns what a vehicle made when the day is already over, from a notebook, a phone call, or nothing at all. Insurance lapses, inspections expire, and the first anyone knows is a roadblock and an impounded vehicle.",
     solution:
@@ -83,7 +83,7 @@ export const PRODUCTS: Product[] = [
     name: "Ledger",
     category: "Collections & Reconciliation",
     status: "Concept",
-    headline: ["Money arrives.", "Knowing whose it is should be free."],
+    headline: ["Every payment matched", "to the right customer."],
     problem:
       "Mobile money moves instantly and reconciles never. A business takes payment across a paybill, a till, a bank and cash, then spends the first week of every month working out who paid what. The books are always a fortnight behind the bank.",
     solution:
@@ -102,7 +102,7 @@ export const PRODUCTS: Product[] = [
     name: "Concierge",
     category: "Conversational Service Agent",
     status: "Concept",
-    headline: ["Your customers already", "opened WhatsApp."],
+    headline: ["Answer customers on WhatsApp,", "from your own records."],
     problem:
       "Customers ask the same eleven questions (balance, booking, hours, status, receipt), and a person answers each one by hand, badly, between other work. Nobody installs an app to ask a question they could have sent as a message.",
     solution:
@@ -121,7 +121,7 @@ export const PRODUCTS: Product[] = [
     name: "Roster",
     category: "Field Workforce Operations",
     status: "Concept",
-    headline: ["The crew is the", "operation."],
+    headline: ["Plan shifts and record attendance", "across every site."],
     problem:
       "Shifts are planned on paper, attendance is taken on trust, and the argument at the end of the month is about hours nobody recorded. Supervisors spend their day on the phone finding out where people are.",
     solution:
@@ -150,7 +150,7 @@ export const CORE_SERVICES: {
     name: "Aegis",
     role: "Identity & Access",
     detail:
-      "One OIDC provider for every product. A customer signs in once and carries that session across the suite; we never write authentication again.",
+      "One OIDC provider for every product. A customer signs in once and that sign-in works across every product built on it.",
     plain: "Who can sign in, and what each person is allowed to see and do.",
   },
   {
@@ -164,7 +164,7 @@ export const CORE_SERVICES: {
     name: "Signal",
     role: "Messaging",
     detail:
-      "SMS, WhatsApp, email and push through one send. Templates, throttling, delivery receipts and quiet hours belong here, not in five codebases.",
+      "SMS, WhatsApp, email and push through one send. Templates, throttling, delivery receipts and quiet hours are handled once, for every product.",
     plain: "Reaching customers on WhatsApp, SMS and email, with every delivery tracked.",
   },
   {

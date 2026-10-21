@@ -1,15 +1,14 @@
 import type { Client } from "@/lib/clients";
 
-/** One piece of work: the client's mark in brushed metal, what it is, and a way to see it. */
+/** One piece of work: the client's mark in brushed metal, what it is, and a way to see it.
+ *  Systems behind a client's sign-in have no public address, so they are offered on request. */
 export default function CaseCard({ client, summary }: { client: Client; summary?: string }) {
+  const Tag = client.href ? "a" : "div";
+  const link = client.href
+    ? { href: client.href, target: "_blank", rel: "noopener noreferrer", "aria-label": `${client.name}, opens in a new tab` }
+    : {};
   return (
-    <a
-      href={client.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="client-tile chrome-edge group h-full"
-      aria-label={`${client.name}, opens in a new tab`}
-    >
+    <Tag {...link} className="client-tile chrome-edge group h-full">
       <div className="relative z-[4] flex items-start justify-between gap-4">
         <span className="font-mono text-[0.58rem] tracking-[0.2em] text-steel-2 uppercase">
           {client.sector}
@@ -45,9 +44,9 @@ export default function CaseCard({ client, summary }: { client: Client; summary?
         </div>
         {summary && <p className="mt-3 text-sm leading-relaxed text-silver">{summary}</p>}
         <p className="mt-4 font-mono text-[0.6rem] tracking-[0.22em] text-silver uppercase transition-colors duration-500 group-hover:text-white">
-          See it live ↗
+          {client.href ? "See it live ↗" : "Shown on request"}
         </p>
       </div>
-    </a>
+    </Tag>
   );
 }
