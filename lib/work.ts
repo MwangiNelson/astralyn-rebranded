@@ -54,7 +54,7 @@ export const CAPABILITIES: Capability[] = [
       {
         client: "Sustainable Kenya",
         summary:
-          "A national sustainability platform for Kenyan businesses, including a system that finds funding opportunities and matches them to each business.",
+          "A national sustainability platform for Kenyan businesses.",
       },
       {
         client: "Mark Infosys",
