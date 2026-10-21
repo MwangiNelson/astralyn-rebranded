@@ -34,7 +34,7 @@ export const CLIENTS: Client[] = [
     name: "HERA Conceive",
     sector: "Product Design · App",
     logo: "/clients/hera.png",
-    href: "https://heraconceive.com/",
+    href: "https://www.heraconceive.com/",
     year: "2025",
     status: "Live",
   },
@@ -44,13 +44,6 @@ export const CLIENTS: Client[] = [
     logo: "/clients/impexicon.png",
     href: "https://impexicon.com/",
     status: "Live",
-  },
-  {
-    name: "Mark Infosys",
-    sector: "Managed Deployment",
-    logo: "/clients/mark-infosys.png",
-    year: "2020",
-    status: "Maintained",
   },
   {
     name: "Sustainable Kenya",

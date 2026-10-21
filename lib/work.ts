@@ -105,7 +105,7 @@ export const CAPABILITIES: Capability[] = [
 ];
 
 /** Work that shows our range but does not belong in a group above. */
-export const ALSO = ["Mark Infosys", "Alientag VR"];
+export const ALSO = ["Alientag VR"];
 
 /* The approach, in the order an engagement actually runs. */
 export const ENGAGEMENT = [
@@ -123,6 +123,6 @@ export const ENGAGEMENT = [
   },
   {
     t: "We stay to run it.",
-    d: "We deploy and maintain what we build. Our longest partnership began in 2020, and we still run what we built for them.",
+    d: "We deploy and maintain what we build, and keep working on it as the business changes, rather than handing it over and leaving.",
   },
 ];
