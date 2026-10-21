@@ -40,32 +40,32 @@ export const ROLE_META: Record<
 > = {
   engineering: {
     label: "Engineering",
-    blurb: "The systems under everything.",
+    blurb: "Building and running our systems.",
     order: 1,
   },
-  design: { label: "Design", blurb: "Form, motion, and the brand.", order: 2 },
-  product: { label: "Product", blurb: "What gets built, and why.", order: 3 },
-  operations: { label: "Operations", blurb: "The machine that keeps time.", order: 4 },
-  finance: { label: "Finance", blurb: "Capital, controls, reporting.", order: 5 },
-  growth: { label: "Growth", blurb: "Markets entered, demand built.", order: 6 },
-  security: { label: "Security", blurb: "Trust, enforced.", order: 7 },
+  design: { label: "Design", blurb: "Product design and brand.", order: 2 },
+  product: { label: "Product", blurb: "Deciding what we build next.", order: 3 },
+  operations: { label: "Operations", blurb: "Running the company day to day.", order: 4 },
+  finance: { label: "Finance", blurb: "Accounts, controls and reporting.", order: 5 },
+  growth: { label: "Growth", blurb: "Sales and marketing.", order: 6 },
+  security: { label: "Security", blurb: "Security for our systems and our clients'.", order: 7 },
   partnerships: {
     label: "Partnerships",
-    blurb: "The register of allied houses.",
+    blurb: "Companies we work alongside.",
     order: 8,
   },
   consultant: {
     label: "Consultants",
-    blurb: "Specialists retained on the work that needs them.",
+    blurb: "Specialists we bring in for particular projects.",
     order: 9,
   },
-  legal: { label: "Legal", blurb: "Counsel, contracts, compliance.", order: 10 },
+  legal: { label: "Legal", blurb: "Contracts, compliance and legal advice.", order: 10 },
   research: {
     label: "Research & Development",
-    blurb: "The Lab. Applied, not academic.",
+    blurb: "Research behind the Lab and our products.",
     order: 11,
   },
-  advisor: { label: "Advisory", blurb: "Long counsel, no day-to-day.", order: 12 },
+  advisor: { label: "Advisory", blurb: "People we go to for advice, outside the day-to-day work.", order: 12 },
 };
 
 /* ---------------- SOCIALS ---------------- */
@@ -158,6 +158,11 @@ export const TEAM: TeamMember[] = [
       },
     ],
   },
+  {
+    name: "Julius Bwibo",
+    role: "Tech Guru",
+    kind: "advisor",
+  },
 ];
 
 /** The roster, bucketed by discipline in ROLE_META order. Empty
@@ -189,14 +194,16 @@ export type Founder = {
   focus: string[];
   technologies: string[];
   timeline: { year: string; event: string }[];
-  projects: { name: string; x: string; y: string; drift: number }[];
+  /** Real projects only, floated around the dossier. Left out until each
+   *  founder's own list is confirmed; an invented name is worse than none. */
+  projects?: { name: string; x: string; y: string; drift: number }[];
 };
 
 const SHARED_TIMELINE = [
-  { year: "2023", event: "Astralyn founded. Strategy, design and engineering, fused." },
-  { year: "2024", event: "First platforms shipped." },
-  { year: "2025", event: "The house expands across markets and disciplines." },
-  { year: "2026", event: "Five products, one platform of our own." },
+  { year: "2023", event: "Astralyn founded in Nairobi." },
+  { year: "2024", event: "First client platforms shipped." },
+  { year: "2025", event: "Started building products of our own." },
+  { year: "2026", event: "Astralyn Core, and Nyumbisha built on it." },
 ];
 
 /* NOTE (Nelson): titles are neutral "Co-Founder & Partner" placeholders and the
@@ -217,12 +224,6 @@ export const FOUNDERS: Founder[] = [
     focus: ["Technology", "Engineering", "Infrastructure", "Architecture"],
     technologies: ["TypeScript", "Rust", "Cloud", "AI Systems", "Edge", "Data"],
     timeline: SHARED_TIMELINE,
-    projects: [
-      { name: "MERIDIAN", x: "8%", y: "18%", drift: 14 },
-      { name: "AXIOM RAIL", x: "72%", y: "12%", drift: 18 },
-      { name: "OBSIDIAN", x: "82%", y: "58%", drift: 12 },
-      { name: "CORE", x: "5%", y: "66%", drift: 16 },
-    ],
   },
   {
     n: "02",
@@ -238,12 +239,6 @@ export const FOUNDERS: Founder[] = [
     focus: ["Strategy", "Ventures", "Market Engineering", "Growth"],
     technologies: ["Strategy", "Research", "Modeling", "Positioning", "Ventures"],
     timeline: SHARED_TIMELINE,
-    projects: [
-      { name: "STRATEGY", x: "10%", y: "14%", drift: 16 },
-      { name: "VENTURES", x: "76%", y: "20%", drift: 12 },
-      { name: "MARKETS", x: "80%", y: "62%", drift: 18 },
-      { name: "GROWTH", x: "6%", y: "70%", drift: 14 },
-    ],
   },
   {
     n: "03",
@@ -259,12 +254,6 @@ export const FOUNDERS: Founder[] = [
     focus: ["Design", "Brand", "Interaction", "Design Systems"],
     technologies: ["Product Design", "Motion", "Design Tokens", "Type", "Brand"],
     timeline: SHARED_TIMELINE,
-    projects: [
-      { name: "OBSIDIAN UI", x: "9%", y: "16%", drift: 16 },
-      { name: "BRAND", x: "74%", y: "18%", drift: 12 },
-      { name: "MONO/CHROME", x: "80%", y: "60%", drift: 18 },
-      { name: "LUMEN", x: "6%", y: "68%", drift: 14 },
-    ],
   },
   {
     n: "04",
@@ -280,11 +269,5 @@ export const FOUNDERS: Founder[] = [
     focus: ["AI", "Product", "Automation", "Platforms"],
     technologies: ["AI", "ML", "Product", "Automation", "Platforms", "Data"],
     timeline: SHARED_TIMELINE,
-    projects: [
-      { name: "MERIDIAN", x: "10%", y: "15%", drift: 16 },
-      { name: "AUTONOMY", x: "75%", y: "20%", drift: 12 },
-      { name: "SIGNAL", x: "81%", y: "62%", drift: 18 },
-      { name: "PRODUCT", x: "5%", y: "69%", drift: 14 },
-    ],
   },
 ];
