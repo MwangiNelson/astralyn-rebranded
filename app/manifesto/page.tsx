@@ -4,6 +4,9 @@ import { useRef } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Reveal, RevealWords } from "@/components/motion/Reveal";
+import Positioning from "@/components/about/Positioning";
+import Standing from "@/components/about/Standing";
+import Transformation from "@/components/about/Transformation";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -152,6 +155,11 @@ export default function Manifesto() {
           </div>
         </div>
       </section>
+
+      {/* Moved here from the homepage, which now keeps to how we build. */}
+      <Positioning />
+      <Standing />
+      <Transformation />
 
       {/* ---------------- THE CLOSE ---------------- */}
       <section className="relative overflow-hidden py-32 md:py-44">

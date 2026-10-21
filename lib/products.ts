@@ -27,7 +27,8 @@ export type Product = {
   audience: string;
   /** Capabilities, not features — four is the limit. */
   pillars: string[];
-  /** Landing-page one-liner. */
+  /** Plain description for lists: what it is and who it is for. The headline
+   *  does the persuading; a list of five taglines reads as five slogans. */
   line: string;
   /** The product's own site, once it has one. Present means this page stops
    *  doing the selling and hands off to it. */
@@ -54,7 +55,7 @@ export const PRODUCTS: Product[] = [
       "Automatic payment matching",
       "Tenant move-in on WhatsApp",
     ],
-    line: "Bill tenants, collect by M-Pesa and match every payment, in the chat they already use.",
+    line: "Rent collection for landlords and managing agents, over WhatsApp and M-Pesa.",
     site: "https://nyumbisha.astralyngroup.com",
     image: "/products/nyumbisha.webp",
   },
@@ -75,7 +76,7 @@ export const PRODUCTS: Product[] = [
       "Compliance expiry calendar",
       "Owner reporting",
     ],
-    line: "The day's takings, the vehicle's papers, and the driver behind both. Closed nightly.",
+    line: "Fleet management for SACCOs and logistics operators: daily collections, expenses and vehicle documents.",
   },
   {
     index: "03",
@@ -94,7 +95,7 @@ export const PRODUCTS: Product[] = [
       "Exception queues",
       "Settlement & payouts",
     ],
-    line: "Every payment matched to a customer and an invoice the moment it lands.",
+    line: "Payment reconciliation for schools, clinics and other businesses that collect from many customers.",
   },
   {
     index: "04",
@@ -113,7 +114,7 @@ export const PRODUCTS: Product[] = [
       "Transactional, not chatty",
       "Clean human handoff",
     ],
-    line: "An agent that answers with your data, on the channel your customers already use.",
+    line: "A WhatsApp customer service agent that answers from the business's own records.",
   },
   {
     index: "05",
@@ -132,7 +133,7 @@ export const PRODUCTS: Product[] = [
       "Task dispatch",
       "Payroll-ready timesheets",
     ],
-    line: "Plan the shift, verify the clock-in, and hand payroll a timesheet it can trust.",
+    line: "Shift planning, attendance and timesheets for teams working across several sites.",
   },
 ];
 
@@ -141,41 +142,50 @@ export const CORE_SERVICES: {
   name: string;
   role: string;
   detail: string;
+  /** What the service does, in the words of the business that relies on it.
+   *  `detail` is for technical readers on /products; this is for everyone else. */
+  plain: string;
 }[] = [
   {
     name: "Aegis",
     role: "Identity & Access",
     detail:
       "One OIDC provider for every product. A customer signs in once and carries that session across the suite; we never write authentication again.",
+    plain: "Who can sign in, and what each person is allowed to see and do.",
   },
   {
     name: "Rail",
     role: "Payments",
     detail:
       "M-Pesa, cards and bank rails behind one interface, with idempotent webhooks and a normalised transaction shape every product already understands.",
+    plain: "Taking M-Pesa, card and bank payments, and matching each one to the right customer and invoice.",
   },
   {
     name: "Signal",
     role: "Messaging",
     detail:
       "SMS, WhatsApp, email and push through one send. Templates, throttling, delivery receipts and quiet hours belong here, not in five codebases.",
+    plain: "Reaching customers on WhatsApp, SMS and email, with every delivery tracked.",
   },
   {
     name: "Meter",
     role: "Billing & Entitlements",
     detail:
       "Plans, seats, usage and limits. A product asks whether a tenant may do a thing; it does not implement subscriptions.",
+    plain: "Plans, subscriptions and usage limits for each customer account.",
   },
   {
     name: "Vault",
     role: "Documents",
     detail:
       "Storage, generation and signature for leases, logbooks, statements and notices. The retention rules travel with the document, not the app.",
+    plain: "Generating and storing statements, receipts, notices and contracts.",
   },
   {
     name: "Trace",
     role: "Audit & Events",
     detail:
       "An append-only record of who did what, and the event bus the products talk to each other over. Compliance and integration from the same log.",
+    plain: "A permanent record of who did what and when, for audits, disputes and compliance.",
   },
 ];

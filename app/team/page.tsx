@@ -234,7 +234,7 @@ function FounderDossier({
           <div className="relative flex flex-col justify-center px-6 py-28 md:px-12 lg:px-16">
             {/* Floating project tags */}
             <div className="pointer-events-none absolute inset-0 hidden lg:block">
-              {founder.projects.map((p, i) => (
+              {founder.projects?.map((p, i) => (
                 <motion.span
                   key={p.name}
                   initial={{ opacity: 0 }}
@@ -400,9 +400,8 @@ function Roster() {
       </Reveal>
       <Reveal delay={0.15}>
         <p className="mt-8 max-w-lg text-base leading-relaxed text-silver">
-          The specialists we retain, the counsel we keep and the people who
-          advise the house. Filed by discipline, each carrying the mark of what
-          they do.
+          The people who work with us beyond the four founders: specialists,
+          legal counsel, research and advisers, grouped by what they do.
         </p>
       </Reveal>
 
@@ -431,7 +430,7 @@ function Roster() {
                   >
                     <RoleIcon kind={m.kind} glyph={m.glyph} plated />
                     <div className="min-w-0">
-                      <p className="display truncate text-lg text-white transition-colors duration-500 group-hover:text-chrome md:text-xl">
+                      <p className="display-title truncate text-lg text-white transition-colors duration-500 group-hover:text-chrome md:text-xl">
                         {m.name}
                       </p>
                       <p className="mt-1.5 font-mono text-[0.6rem] tracking-[0.22em] text-steel uppercase">
@@ -508,9 +507,8 @@ export default function TeamPage() {
           </h1>
           <Reveal delay={0.7} className="mt-12 max-w-md">
             <p className="text-base leading-relaxed text-silver">
-              Four founders, presented as dossiers rather than profiles, and
-              behind them the people who do the work. Approach a founder and the
-              band opens; activate it and the file fills the screen.
+              The four founders, and the specialists and advisers who work
+              with us. Open a founder&apos;s card to read their file.
             </p>
           </Reveal>
         </div>
@@ -530,7 +528,7 @@ export default function TeamPage() {
         </Reveal>
         <Reveal delay={0.2}>
           <p className="mt-10 text-center font-mono text-xs tracking-[0.3em] text-steel uppercase">
-            Hover to open a band. Click it again for the dossier.
+            Hover over a founder to open their card. Click for the full file.
           </p>
         </Reveal>
       </section>
